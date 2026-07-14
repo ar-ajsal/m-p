@@ -1,983 +1,744 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mastery & Precise Business House — Connecting Purpose with Progress</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@400;500&display=swap"
-    rel="stylesheet">
-  <style>
-    :root {
-      --navy-deep: #0d1a24;
-      --navy-mid: #142838;
-      --navy-card: #182e40;
-      --copper: #c17a4d;
-      --copper-light: #e0a576;
-      --cream: #f3ece1;
-      --slate: #a9b8c4;
-      --line: rgba(243, 236, 225, 0.09);
-      --radius: 2px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--navy-deep);
-      color: var(--cream);
-      font-family: 'Work Sans', sans-serif;
-      font-weight: 400;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation: none !important;
-        transition: none !important;
-      }
-    }
-
-    h1,
-    h2,
-    h3 {
-      font-family: 'Fraunces', serif;
-      font-weight: 500;
-      line-height: 1.12;
-      letter-spacing: -0.01em;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .eyebrow {
-      font-family: 'Space Grotesk', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--copper-light);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .eyebrow::before {
-      content: '';
-      width: 22px;
-      height: 1px;
-      background: var(--copper-light);
-      display: inline-block;
-    }
-
-    .wrap {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 6vw;
-    }
-
-    /* ---------- NAV ---------- */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: linear-gradient(to bottom, rgba(13, 26, 36, 0.92), rgba(13, 26, 36, 0));
-      backdrop-filter: blur(6px);
-    }
-
-    nav.wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 1.6rem;
-      padding-bottom: 1.6rem;
-    }
-
-    .logo {
-      font-family: 'Fraunces', serif;
-      font-size: 1.15rem;
-      letter-spacing: 0.02em;
-    }
-
-    .logo span {
-      color: var(--copper-light);
-    }
-
-    .navlinks {
-      display: flex;
-      gap: 2.4rem;
-      font-family: 'Space Grotesk', monospace;
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .navlinks a {
-      color: var(--slate);
-      position: relative;
-      padding-bottom: 4px;
-      transition: color .25s ease;
-    }
-
-    .navlinks a:hover,
-    .navlinks a:focus-visible {
-      color: var(--cream);
-    }
-
-    .navlinks a::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0%;
-      height: 1px;
-      background: var(--copper-light);
-      transition: width .3s ease;
-    }
-
-    .navlinks a:hover::after {
-      width: 100%;
-    }
-
-    .navmenu-toggle {
-      display: none;
-    }
-
-    /* ---------- HERO ---------- */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 6rem;
-      overflow: hidden;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 3rem;
-      align-items: center;
-      width: 100%;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.4rem, 5vw, 4.1rem);
-      color: var(--cream);
-      margin: 1.1rem 0 1.6rem;
-    }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--copper-light);
-    }
-
-    .hero p.lede {
-      font-size: 1.08rem;
-      color: var(--slate);
-      max-width: 36em;
-      margin-bottom: 2.2rem;
-    }
-
-    .cta-row {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      font-family: 'Space Grotesk', monospace;
-      font-size: 0.82rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.95rem 1.7rem;
-      border-radius: var(--radius);
-      display: inline-block;
-      transition: transform .25s ease, background .25s ease, border-color .25s ease;
-    }
-
-    .btn-primary {
-      background: var(--copper);
-      color: #12212d;
-      font-weight: 500;
-    }
-
-    .btn-primary:hover {
-      background: var(--copper-light);
-      transform: translateY(-2px);
-    }
-
-    .btn-ghost {
-      border: 1px solid var(--line);
-      color: var(--cream);
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--copper-light);
-      color: var(--copper-light);
-      transform: translateY(-2px);
-    }
-
-    /* network signature */
-    .network-wrap {
-      position: relative;
-      aspect-ratio: 1/1;
-      max-width: 520px;
-      justify-self: center;
-    }
-
-    .network-wrap svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .node-label {
-      font-family: 'Space Grotesk', monospace;
-      font-size: 18px;
-      letter-spacing: 0.04em;
-      fill: var(--slate);
-    }
-
-    .node-label.center {
-      fill: var(--cream);
-      font-size: 20px;
-    }
-
-    .pulse {
-      fill: var(--copper-light);
-    }
-
-    .edge {
-      stroke: var(--line);
-      stroke-width: 1;
-    }
-
-    .node-dot {
-      fill: var(--navy-card);
-      stroke: var(--copper-light);
-      stroke-width: 1.3;
-    }
-
-    .node-dot.center {
-      fill: var(--copper);
-      stroke: none;
-    }
-
-    /* ---------- SECTION GENERAL ---------- */
-    section {
-      padding: 7.5rem 0;
-      position: relative;
-    }
-
-    section.alt {
-      background: var(--navy-mid);
-    }
-
-    .section-head {
-      max-width: 640px;
-      margin-bottom: 3.5rem;
-    }
-
-    .section-head h2 {
-      font-size: clamp(1.8rem, 3.4vw, 2.6rem);
-      margin-top: 0.9rem;
-      color: var(--cream);
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-
-    .reveal.in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ---------- WHO WE ARE ---------- */
-    .who-grid {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .who-grid p {
-      color: var(--slate);
-      font-size: 1.02rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .big-quote {
-      font-family: 'Fraunces', serif;
-      font-style: italic;
-      font-size: 1.5rem;
-      color: var(--cream);
-      line-height: 1.4;
-      border-left: 2px solid var(--copper);
-      padding-left: 1.6rem;
-    }
-
-    /* ---------- VISION / MISSION ---------- */
-    .vm-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
-    }
-
-    .vm-card {
-      background: var(--navy-deep);
-      padding: 3rem 2.6rem;
-    }
-
-    section.alt .vm-card {
-      background: var(--navy-mid);
-    }
-
-    .vm-card .eyebrow {
-      margin-bottom: 1rem;
-    }
-
-    .vm-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1.1rem;
-      color: var(--cream);
-    }
-
-    .vm-card p {
-      color: var(--slate);
-    }
-
-    /* ---------- CORE VALUES ---------- */
-    .values-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-    }
-
-    .value-card {
-      padding: 2.6rem;
-      background: var(--navy-card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      transition: border-color .3s ease, transform .3s ease;
-    }
-
-    .value-card:hover {
-      border-color: var(--copper);
-      transform: translateY(-4px);
-    }
-
-    .value-mark {
-      width: 44px;
-      height: 44px;
-      border: 1px solid var(--copper-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.4rem;
-      color: var(--copper-light);
-      font-family: 'Fraunces', serif;
-      font-style: italic;
-      font-size: 1.1rem;
-    }
-
-    .value-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.8rem;
-      color: var(--cream);
-    }
-
-    .value-card p {
-      color: var(--slate);
-    }
-
-    /* ---------- SERVICES ---------- */
-    .services-list {
-      border-top: 1px solid var(--line);
-    }
-
-    .service-row {
-      display: grid;
-      grid-template-columns: 80px 1fr 1.3fr;
-      gap: 2rem;
-      align-items: center;
-      padding: 2rem 0;
-      border-bottom: 1px solid var(--line);
-      transition: background .3s ease;
-    }
-
-    .service-row:hover {
-      background: rgba(243, 236, 225, 0.02);
-    }
-
-    .service-index {
-      font-family: 'Space Grotesk', monospace;
-      font-size: 0.78rem;
-      color: var(--copper-light);
-      letter-spacing: 0.05em;
-    }
-
-    .service-row h3 {
-      font-size: 1.35rem;
-      color: var(--cream);
-      font-weight: 500;
-    }
-
-    .service-row p {
-      color: var(--slate);
-      font-size: 0.96rem;
-    }
-
-    /* ---------- WHY CHOOSE US ---------- */
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2.5rem;
-    }
-
-    .why-card h3 {
-      font-size: 1.25rem;
-      color: var(--cream);
-      margin: 1.4rem 0 0.8rem;
-    }
-
-    .why-card p {
-      color: var(--slate);
-      font-size: 0.96rem;
-    }
-
-    .why-num {
-      font-family: 'Fraunces', serif;
-      font-style: italic;
-      font-size: 2.2rem;
-      color: var(--copper);
-      opacity: 0.85;
-    }
-
-    /* ---------- CONTACT ---------- */
-    .contact-section {
-      background: var(--navy-mid);
-      position: relative;
-    }
-
-    .contact-inner {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .contact-inner .big-quote {
-      margin-bottom: 0;
-    }
-
-    .contact-list {
-      list-style: none;
-    }
-
-    .contact-list li {
-      border-top: 1px solid var(--line);
-      padding: 1.5rem 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 1rem;
-    }
-
-    .contact-list li:last-child {
-      border-bottom: 1px solid var(--line);
-    }
-
-    .contact-list .label {
-      font-family: 'Space Grotesk', monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--slate);
-    }
-
-    .contact-list .value {
-      font-family: 'Fraunces', serif;
-      font-size: 1.2rem;
-      color: var(--cream);
-    }
-
-    .contact-list a.value:hover {
-      color: var(--copper-light);
-    }
-
-    /* ---------- FOOTER ---------- */
-    footer {
-      padding: 3.5rem 0 2.5rem;
-      text-align: center;
-    }
-
-    footer .tagline {
-      font-family: 'Fraunces', serif;
-      font-style: italic;
-      font-size: 1.4rem;
-      color: var(--cream);
-      margin-bottom: 1.6rem;
-    }
-
-    footer .fine {
-      font-family: 'Space Grotesk', monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      color: var(--slate);
-      text-transform: uppercase;
-    }
-
-    /* ---------- RESPONSIVE ---------- */
-    @media (max-width: 880px) {
-      .navlinks {
-        position: fixed;
-        top: 0;
-        right: 0;
-        height: 100vh;
-        width: min(78vw, 320px);
-        background: var(--navy-mid);
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 2rem;
-        padding: 2rem 2.4rem;
-        transform: translateX(100%);
-        transition: transform .35s ease;
-        border-left: 1px solid var(--line);
-      }
-
-      .navlinks.open {
-        transform: translateX(0);
-      }
-
-      .navmenu-toggle {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        z-index: 110;
-        padding: 8px;
-      }
-
-      .navmenu-toggle span {
-        width: 22px;
-        height: 1.5px;
-        background: var(--cream);
-        display: block;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .network-wrap {
-        max-width: 340px;
-        margin-top: 2rem;
-      }
-
-      .who-grid {
-        grid-template-columns: 1fr;
-        gap: 2.2rem;
-      }
-
-      .vm-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .values-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .why-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .service-row {
-        grid-template-columns: 50px 1fr;
-        grid-template-areas: "idx title" "desc desc";
-      }
-
-      .service-index {
-        grid-area: idx;
-      }
-
-      .service-row h3 {
-        grid-area: title;
-      }
-
-      .service-row p {
-        grid-area: desc;
-      }
-
-      .contact-inner {
-        grid-template-columns: 1fr;
-      }
-
-      section {
-        padding: 5rem 0;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mastery &amp; Precise Business House &mdash; Connecting Purpose with Progress</title>
+<meta name="description" content="Mastery &amp; Precise Business House Private Limited &mdash; A multidisciplinary consulting organization delivering strategic advisory, logistics, healthcare, trade, and business excellence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ======================== TOKENS ======================== */
+:root {
+  --bg:        #faf7f2;
+  --bg-alt:    #f3ede3;
+  --bg-card:   #ffffff;
+  --bg-glass:  rgba(255,255,255,0.82);
+  --navy:      #0d1a24;
+  --navy-mid:  #1c3244;
+  --copper:    #b5663a;
+  --copper-lt: #d4824e;
+  --copper-gw: rgba(181,102,58,0.14);
+  --gold:      #c9870a;
+  --text:      #1a2e3d;
+  --muted:     #5a7388;
+  --line:      rgba(13,26,36,0.1);
+  --line-b:    rgba(13,26,36,0.16);
+  --shadow-sm: 0 2px 12px rgba(13,26,36,0.08);
+  --shadow-md: 0 8px 40px rgba(13,26,36,0.12);
+  --shadow-lg: 0 20px 64px rgba(13,26,36,0.14);
+  --radius:    12px;
+  --radius-lg: 24px;
+  --tr:        0.32s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"Work Sans",sans-serif;font-weight:400;line-height:1.65;overflow-x:hidden}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+h1,h2,h3,h4{font-family:"Fraunces",serif;font-weight:500;line-height:1.1;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%}
+.eyebrow{font-family:"Space Grotesk",sans-serif;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--copper-lt);display:inline-flex;align-items:center;gap:.7rem}
+.eyebrow::before{content:"";width:26px;height:1.5px;background:linear-gradient(90deg,var(--copper-lt),transparent);display:inline-block}
+.wrap{max-width:1200px;margin:0 auto;padding:0 5vw}
+
+/* ======================== CANVAS ======================== */
+#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.35}
+
+/* ======================== HEADER ======================== */
+header{position:fixed;top:0;left:0;right:0;z-index:200;transition:background var(--tr),box-shadow var(--tr)}
+header.scrolled{background:rgba(250,247,242,.96);backdrop-filter:blur(20px) saturate(1.5);box-shadow:0 1px 0 var(--line-b),0 6px 28px rgba(13,26,36,.08)}
+nav.wrap{display:flex;align-items:center;justify-content:space-between;padding-top:1.2rem;padding-bottom:1.2rem}
+.logo{font-family:"Fraunces",serif;font-size:1.1rem;letter-spacing:.04em;display:flex;align-items:center;gap:.55rem;color:var(--navy)}
+.logo-badge{width:36px;height:36px;background:linear-gradient(135deg,var(--copper),var(--gold));border-radius:10px;display:grid;place-items:center;font-size:.72rem;font-weight:700;color:#fff;flex-shrink:0;box-shadow:0 4px 16px var(--copper-gw);font-family:"Space Grotesk",sans-serif}
+.logo .amp{color:var(--copper-lt);margin:0 .1em}
+.navlinks{display:flex;gap:2rem;font-family:"Space Grotesk",sans-serif;font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;align-items:center}
+.navlinks a{color:var(--muted);position:relative;padding-bottom:3px;transition:color var(--tr)}
+.navlinks a::after{content:"";position:absolute;left:0;bottom:0;width:0%;height:1.5px;background:linear-gradient(90deg,var(--copper-lt),var(--gold));transition:width .3s ease}
+.navlinks a:hover{color:var(--navy)}
+.navlinks a:hover::after{width:100%}
+.nav-cta{background:linear-gradient(135deg,var(--copper),var(--copper-lt));color:#fff!important;font-weight:600;padding:.52rem 1.3rem;border-radius:50px;box-shadow:0 4px 16px var(--copper-gw);transition:transform var(--tr),box-shadow var(--tr)!important}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px var(--copper-gw)}
+.navmenu-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;z-index:210;padding:8px}
+.navmenu-toggle span{width:22px;height:1.5px;background:var(--navy);display:block;transition:transform .3s,opacity .3s}
+.navmenu-toggle.active span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.navmenu-toggle.active span:nth-child(2){opacity:0}
+.navmenu-toggle.active span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* ======================== BUTTONS ======================== */
+.btn{font-family:"Space Grotesk",sans-serif;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;padding:.9rem 1.85rem;border-radius:50px;display:inline-flex;align-items:center;gap:.5rem;transition:transform var(--tr),box-shadow var(--tr);cursor:pointer;border:none}
+.btn-primary{background:linear-gradient(135deg,var(--copper) 0%,var(--copper-lt) 60%,var(--gold) 100%);color:#fff;box-shadow:0 6px 24px var(--copper-gw)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(181,102,58,.32)}
+.btn-ghost{background:#fff;color:var(--navy);border:1.5px solid var(--line-b)}
+.btn-ghost:hover{border-color:var(--copper-lt);color:var(--copper);transform:translateY(-3px);box-shadow:var(--shadow-sm)}
+.cta-row{display:flex;gap:1rem;flex-wrap:wrap}
+
+/* ======================== REVEAL ======================== */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-28px);transition:opacity .75s ease,transform .75s ease}
+.reveal-left.in{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(28px);transition:opacity .75s ease,transform .75s ease}
+.reveal-right.in{opacity:1;transform:translateX(0)}
+
+/* ======================== HERO ======================== */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding-top:6rem;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:1}
+.hero-bg-img{width:100%;height:100%;object-fit:cover;opacity:.28;filter:saturate(.75)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 65% 40%,rgba(181,102,58,.08) 0%,transparent 65%),linear-gradient(180deg,var(--bg) 0%,transparent 25%,transparent 75%,var(--bg) 100%),linear-gradient(90deg,var(--bg) 0%,transparent 45%)}
+.hero-content{position:relative;z-index:2;width:100%}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+
+.hero-badge{display:inline-flex;align-items:center;gap:.7rem;background:rgba(255,255,255,.9);border:1.5px solid var(--line-b);backdrop-filter:blur(12px);border-radius:50px;padding:.45rem 1.1rem .45rem .65rem;margin-bottom:1.8rem;box-shadow:var(--shadow-sm)}
+.hero-badge-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px rgba(34,197,94,.6);animation:pulse-dot 2s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 8px rgba(34,197,94,.6)}50%{box-shadow:0 0 4px rgba(34,197,94,.3)}}
+.hero-badge span{font-family:"Space Grotesk",sans-serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+.hero h1{font-size:clamp(2.8rem,5.5vw,5rem);color:var(--navy);margin-bottom:1.5rem;line-height:1.06}
+.hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--copper),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p.lede{font-size:1.05rem;color:var(--muted);max-width:38em;margin-bottom:2.2rem;line-height:1.8}
+
+.hero-stats{display:flex;gap:2.2rem;margin-top:2.8rem;padding-top:2rem;border-top:1.5px solid var(--line-b)}
+.hero-stat-num{font-family:"Fraunces",serif;font-size:2rem;font-weight:500;background:linear-gradient(135deg,var(--copper),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-stat-label{font-family:"Space Grotesk",sans-serif;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.15rem}
+
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center}
+.hero-img-frame{position:relative;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg)}
+.hero-img-frame img{width:100%;max-width:520px;aspect-ratio:1/1;object-fit:cover;border-radius:var(--radius-lg)}
+.hero-img-frame::after{content:"";position:absolute;inset:0;border:1.5px solid rgba(181,102,58,.2);border-radius:var(--radius-lg);pointer-events:none}
+.hero-network{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.hero-network svg{width:100%;height:100%;filter:drop-shadow(0 0 16px rgba(181,102,58,.25))}
+.node-label{font-family:"Space Grotesk",sans-serif;font-size:13px;letter-spacing:.06em;fill:var(--muted);font-weight:500}
+.node-label.center{fill:var(--navy);font-size:14px;font-weight:600}
+.pulse{fill:var(--copper-lt)}
+.edge{stroke:rgba(13,26,36,.1);stroke-width:1}
+.node-dot{fill:#fff;stroke:var(--copper-lt);stroke-width:1.5}
+.node-dot.center{fill:var(--copper);stroke:var(--gold);stroke-width:2}
+
+.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:float-up 2.5s ease-in-out infinite}
+.scroll-hint span{font-family:"Space Grotesk",sans-serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.scroll-arrow{width:20px;height:32px;border:1.5px solid var(--line-b);border-radius:10px;position:relative}
+.scroll-arrow::after{content:"";position:absolute;top:5px;left:50%;transform:translateX(-50%);width:3px;height:8px;background:var(--copper-lt);border-radius:2px;animation:scroll-dot 2s ease-in-out infinite}
+@keyframes scroll-dot{0%,100%{transform:translateX(-50%) translateY(0);opacity:1}70%{transform:translateX(-50%) translateY(10px);opacity:0}}
+@keyframes float-up{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-6px)}}
+
+/* ======================== SECTIONS ======================== */
+section{padding:8rem 0;position:relative;z-index:1}
+section.alt{background:var(--bg-alt)}
+.section-head{max-width:660px;margin-bottom:4rem}
+.section-head h2{font-size:clamp(2rem,3.5vw,2.9rem);margin-top:1rem;color:var(--navy)}
+.section-head p{color:var(--muted);margin-top:1rem;font-size:1.02rem;line-height:1.75}
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,var(--line-b),transparent);position:relative;z-index:1}
+
+/* ======================== WHO WE ARE ======================== */
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.who-img-wrap{position:relative;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg)}
+.who-img-wrap img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--radius-lg);transition:transform .8s ease}
+.who-img-wrap:hover img{transform:scale(1.04)}
+.who-img-wrap::after{content:"";position:absolute;inset:0;border:1.5px solid rgba(181,102,58,.15);border-radius:var(--radius-lg);pointer-events:none}
+.who-img-badge{position:absolute;bottom:1.5rem;left:1.5rem;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border:1.5px solid var(--line-b);border-radius:var(--radius);padding:1rem 1.3rem;box-shadow:var(--shadow-sm)}
+.who-img-badge strong{font-family:"Fraunces",serif;font-size:1.5rem;color:var(--copper);display:block}
+.who-img-badge span{font-family:"Space Grotesk",sans-serif;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.who-text p{color:var(--muted);font-size:1.02rem;line-height:1.8;margin-bottom:1.3rem}
+.big-quote{font-family:"Fraunces",serif;font-style:italic;font-size:1.4rem;color:var(--navy);line-height:1.48;padding:1.8rem 2rem;border-left:3px solid;border-image:linear-gradient(180deg,var(--copper),var(--gold)) 1;background:linear-gradient(90deg,rgba(181,102,58,.05),transparent);border-radius:0 var(--radius) var(--radius) 0;margin-top:1.5rem}
+
+/* ======================== VISION / MISSION ======================== */
+.vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.vm-card{background:var(--bg-card);padding:3rem 2.8rem;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);border:1.5px solid var(--line);position:relative;overflow:hidden;transition:box-shadow var(--tr),transform var(--tr)}
+.vm-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px)}
+.vm-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--copper),var(--gold));opacity:0;transition:opacity var(--tr)}
+.vm-card:hover::before{opacity:1}
+.vm-card .eyebrow{margin-bottom:1.2rem}
+.vm-card h3{font-size:1.65rem;margin-bottom:1.1rem;color:var(--navy)}
+.vm-card p{color:var(--muted);line-height:1.8}
+.vm-icon{width:54px;height:54px;border:1.5px solid rgba(181,102,58,.2);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.6rem;background:linear-gradient(135deg,rgba(181,102,58,.08),transparent);font-size:1.5rem}
+
+/* ======================== VALUES ======================== */
+.values-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.value-card{padding:2.8rem;background:var(--bg-card);border:1.5px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);position:relative;overflow:hidden;transition:border-color var(--tr),transform var(--tr),box-shadow var(--tr)}
+.value-card:hover{border-color:var(--copper-lt);transform:translateY(-5px);box-shadow:var(--shadow-md)}
+.value-mark{width:52px;height:52px;border:1.5px solid var(--copper-lt);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;color:var(--copper);font-family:"Fraunces",serif;font-style:italic;font-size:1.1rem;background:linear-gradient(135deg,rgba(181,102,58,.08),transparent)}
+.value-card h3{font-size:1.4rem;margin-bottom:.9rem;color:var(--navy)}
+.value-card p{color:var(--muted);line-height:1.75}
+
+/* ======================== SERVICES ======================== */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.service-card{background:var(--bg-card);border:1.5px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow-sm);transition:transform var(--tr),box-shadow var(--tr),border-color var(--tr)}
+.service-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:rgba(181,102,58,.3)}
+.service-img{aspect-ratio:16/9;overflow:hidden;position:relative}
+.service-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.service-card:hover .service-img img{transform:scale(1.08)}
+.service-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(255,255,255,.85) 100%)}
+.service-body{padding:1.8rem;flex:1;display:flex;flex-direction:column}
+.service-index{font-family:"Space Grotesk",sans-serif;font-size:.68rem;letter-spacing:.2em;color:var(--copper-lt);text-transform:uppercase;margin-bottom:.6rem}
+.service-card h3{font-size:1.2rem;color:var(--navy);margin-bottom:.7rem}
+.service-card p{color:var(--muted);font-size:.94rem;line-height:1.72;flex:1}
+.service-arrow{display:inline-flex;align-items:center;gap:.4rem;margin-top:1.2rem;font-family:"Space Grotesk",sans-serif;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--copper);transition:gap var(--tr)}
+.service-card:hover .service-arrow{gap:.75rem}
+.service-arrow svg{width:14px;height:14px}
+.service-card.wide{grid-column:span 2;flex-direction:row}
+.service-card.wide .service-img{aspect-ratio:auto;width:42%;flex-shrink:0}
+.service-card.wide .service-img::after{background:linear-gradient(90deg,transparent 60%,rgba(255,255,255,.9) 100%)}
+.service-card.wide .service-body{padding:2.4rem 2.6rem}
+
+/* ======================== WHY ======================== */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.why-card{padding:2.5rem;background:var(--bg-card);border:1.5px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);transition:box-shadow var(--tr),transform var(--tr)}
+.why-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px)}
+.why-num{font-family:"Fraunces",serif;font-style:italic;font-size:2.8rem;background:linear-gradient(135deg,var(--copper),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:.8;line-height:1;margin-bottom:1.1rem}
+.why-card h3{font-size:1.2rem;color:var(--navy);margin-bottom:.8rem}
+.why-card p{color:var(--muted);font-size:.95rem;line-height:1.75}
+
+/* ======================== MARQUEE ======================== */
+.marquee-section{padding:2rem 0;background:var(--navy);overflow:hidden;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
+.marquee-track{display:flex;gap:3rem;animation:marquee 26s linear infinite;width:max-content}
+.marquee-item{display:flex;align-items:center;gap:.8rem;font-family:"Space Grotesk",sans-serif;font-size:.74rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.55);white-space:nowrap}
+.marquee-dot{width:5px;height:5px;border-radius:50%;background:var(--copper-lt);flex-shrink:0}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ======================== CONTACT ======================== */
+.contact-section{background:var(--bg-alt);position:relative}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-left-h{font-family:"Fraunces",serif;font-weight:500;font-size:clamp(2rem,3.5vw,3rem);color:var(--navy);margin:1rem 0 1.2rem;line-height:1.1;letter-spacing:-.02em}
+.contact-cards{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+.contact-card{display:flex;align-items:center;gap:1.2rem;padding:1.3rem 1.5rem;background:var(--bg-card);border:1.5px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);transition:border-color var(--tr),transform var(--tr),box-shadow var(--tr)}
+.contact-card:hover{border-color:var(--copper-lt);transform:translateX(6px);box-shadow:var(--shadow-md)}
+.contact-card-icon{width:44px;height:44px;background:linear-gradient(135deg,rgba(181,102,58,.12),rgba(181,102,58,.04));border:1.5px solid rgba(181,102,58,.2);border-radius:12px;display:grid;place-items:center;font-size:1.2rem;flex-shrink:0}
+.contact-card-label{font-family:"Space Grotesk",sans-serif;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.contact-card-value{font-family:"Fraunces",serif;font-size:1.05rem;color:var(--navy);margin-top:.1rem}
+.contact-cta-block{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);border-radius:var(--radius-lg);padding:3rem;text-align:center;box-shadow:var(--shadow-lg)}
+.contact-cta-block h3{font-size:1.8rem;color:#fff;margin-bottom:1rem}
+.contact-cta-block p{color:rgba(255,255,255,.65);margin-bottom:2rem;line-height:1.75}
+.contact-cta-block .btn-primary{margin:0 auto}
+
+/* ======================== FOOTER ======================== */
+footer{padding:4.5rem 0 3rem;background:var(--navy);border-top:1px solid rgba(255,255,255,.06)}
+.footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand p{color:rgba(255,255,255,.5);font-size:.92rem;line-height:1.8;max-width:26em;margin-top:1rem}
+.footer-brand .logo{color:#fff}
+.footer-brand .amp{color:var(--copper-lt)}
+.footer-col h4{font-family:"Space Grotesk",sans-serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper-lt);margin-bottom:1.2rem}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:.7rem}
+.footer-col ul a{color:rgba(255,255,255,.5);font-size:.9rem;transition:color var(--tr)}
+.footer-col ul a:hover{color:#fff}
+.footer-bottom{padding-top:2rem;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.footer-bottom p{font-family:"Space Grotesk",sans-serif;font-size:.72rem;letter-spacing:.07em;color:rgba(255,255,255,.4)}
+.footer-tagline{font-family:"Fraunces",serif;font-style:italic;font-size:1rem;color:var(--copper-lt)}
+
+/* ======================== RESPONSIVE ======================== */
+@media(max-width:900px){
+  .navlinks{position:fixed;top:0;right:0;height:100vh;width:min(80vw,340px);background:rgba(250,247,242,.97);backdrop-filter:blur(20px);flex-direction:column;justify-content:center;align-items:flex-start;gap:2rem;padding:2rem 2.8rem;transform:translateX(110%);transition:transform .4s cubic-bezier(.4,0,.2,1);border-left:1.5px solid var(--line-b);box-shadow:-20px 0 60px rgba(13,26,36,.15)}
+  .navlinks.open{transform:translateX(0)}
+  .navlinks a{font-size:1.05rem;color:var(--navy)}
+  .nav-cta{margin-top:1rem}
+  .navmenu-toggle{display:flex}
+  .hero-grid,.who-grid,.values-grid,.why-grid,.contact-inner{grid-template-columns:1fr}
+  .vm-grid{grid-template-columns:1fr}
+  .hero-visual{margin-top:3rem;max-width:380px;margin-inline:auto}
+  .services-grid{grid-template-columns:1fr}
+  .service-card.wide{flex-direction:column;grid-column:span 1}
+  .service-card.wide .service-img{width:100%;aspect-ratio:16/9}
+  .service-card.wide .service-img::after{background:linear-gradient(180deg,transparent 50%,rgba(255,255,255,.85) 100%)}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  section{padding:5.5rem 0}
+}
+@media(max-width:560px){
+  .hero h1{font-size:2.5rem}
+  .hero-stats{flex-wrap:wrap;gap:1.5rem}
+  .footer-inner{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+}
+</style>
 </head>
-
 <body>
 
-  <header>
-    <nav class="wrap">
-      <a href="#top" class="logo">Mastery <span>&amp;</span> Precise</a>
-      <button class="navmenu-toggle" aria-label="Toggle menu" aria-expanded="false" id="menuToggle">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="navlinks" id="navlinks">
-        <a href="#who">Who We Are</a>
-        <a href="#vision">Vision &amp; Mission</a>
-        <a href="#services">Our Services</a>
-        <a href="#contact">Contact Us</a>
-      </div>
-    </nav>
-  </header>
+<canvas id="bg-canvas"></canvas>
 
-  <section class="hero" id="top">
-    <div class="wrap hero-grid">
+<!-- HEADER -->
+<header id="site-header">
+  <nav class="wrap">
+    <a href="#top" class="logo">
+      <div class="logo-badge">M&amp;P</div>
+      Mastery <span class="amp">&amp;</span> Precise
+    </a>
+    <button class="navmenu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="navlinks" id="navlinks">
+      <a href="#who">Who We Are</a>
+      <a href="#vision">Vision &amp; Mission</a>
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#contact" class="nav-cta">Contact Us</a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg">
+    <img src="images/hero_light.png" alt="" class="hero-bg-img" aria-hidden="true">
+  </div>
+  <div class="hero-content wrap">
+    <div class="hero-grid">
       <div>
-        <span class="eyebrow">Business House Private Limited</span>
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          <span>Business House Private Limited</span>
+        </div>
         <h1>Connecting <em>purpose</em><br>with progress.</h1>
-        <p class="lede">Mastery &amp; Precise Business House Private Limited is a multidisciplinary consulting
-          organization helping businesses achieve sustainable growth through strategic advisory, operational excellence,
-          digital transformation, and professional development.</p>
+        <p class="lede">Mastery &amp; Precise Business House is a multidisciplinary consulting organization helping businesses achieve sustainable growth through strategic advisory, operational excellence, digital transformation, and professional development.</p>
         <div class="cta-row">
-          <a href="#contact" class="btn btn-primary">Start a conversation</a>
-          <a href="#services" class="btn btn-ghost">See our services</a>
+          <a href="#contact" class="btn btn-primary">
+            Start a Conversation
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#services" class="btn btn-ghost">Explore Services</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="hero-stat-num">5+</div><div class="hero-stat-label">Industry Sectors</div></div>
+          <div><div class="hero-stat-num">360&deg;</div><div class="hero-stat-label">Business Solutions</div></div>
+          <div><div class="hero-stat-num">&infin;</div><div class="hero-stat-label">Growth Potential</div></div>
         </div>
       </div>
-
-      <div class="network-wrap" aria-hidden="true">
-        <svg viewBox="0 0 500 500">
-          <g class="edges"></g>
-          <g class="nodes"></g>
-        </svg>
+      <div class="hero-visual">
+        <div class="hero-img-frame">
+          <img src="images/hero_visual.png" alt="M&amp;P strategic network visualization" loading="eager">
+          <div class="hero-network" aria-hidden="true">
+            <svg viewBox="0 0 500 500"><g class="edges"></g><g class="nodes"></g></svg>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">
+    <div class="scroll-arrow"></div>
+    <span>Scroll</span>
+  </div>
+</section>
 
-  <section id="who">
-    <div class="wrap">
-      <div class="section-head reveal">
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><div class="marquee-dot"></div>Business Consultancy</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Supply Chain</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Corporate Governance</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Healthcare Advisory</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>EdTech Services</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Industrial Services</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Trade Solutions</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Strategic Growth</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Business Consultancy</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Supply Chain</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Corporate Governance</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Healthcare Advisory</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>EdTech Services</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Industrial Services</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Trade Solutions</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Strategic Growth</div>
+  </div>
+</div>
+
+<!-- WHO WE ARE -->
+<section id="who">
+  <div class="wrap">
+    <div class="who-grid">
+      <div class="reveal-left">
+        <div class="who-img-wrap">
+          <img src="images/about_team.png" alt="The M&amp;P team collaborating on strategic initiatives" loading="lazy">
+          <div class="who-img-badge">
+            <strong>2024</strong>
+            <span>Est. &middot; India</span>
+          </div>
+        </div>
+      </div>
+      <div class="who-text reveal-right">
         <span class="eyebrow">Who We Are</span>
-        <h2>A partner across every stage of growth.</h2>
-      </div>
-      <div class="who-grid">
-        <div class="reveal">
-          <p>Our experienced consultants combine industry expertise with innovative thinking to deliver measurable
-            business outcomes across multiple sectors — from logistics and healthcare to industrial services, trade, and
-            business advisory.</p>
-          <p>At Mastery &amp; Precise, our strength lies in our people: a diverse team of professionals, industry
-            experts, consultants, and strategic advisors who work collaboratively with clients to understand their
-            challenges, identify opportunities, and implement practical strategies for sustainable growth.</p>
-        </div>
-        <div class="reveal">
-          <p class="big-quote">"Our people are our greatest asset. Through expertise, integrity, and collaboration, we
-            help organizations transform challenges into opportunities."</p>
-        </div>
+        <h2 style="font-size:clamp(2rem,3.2vw,2.7rem);margin:1rem 0 1.5rem;color:var(--navy)">A partner across every stage of growth.</h2>
+        <p>Our experienced consultants combine deep industry expertise with innovative thinking to deliver measurable business outcomes across multiple sectors &mdash; from logistics and healthcare to industrial services, trade, and business advisory.</p>
+        <p>At Mastery &amp; Precise, our strength lies in our people: a diverse team of professionals, industry experts, consultants, and strategic advisors who work collaboratively with clients to understand their challenges, identify opportunities, and implement practical strategies for sustainable growth.</p>
+        <blockquote class="big-quote">&ldquo;Our people are our greatest asset. Through expertise, integrity, and collaboration, we help organizations transform challenges into opportunities.&rdquo;</blockquote>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="alt" id="vision">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Company Vision &amp; Mission</span>
-        <h2>Building lasting value, deliberately.</h2>
-      </div>
-    </div>
-    <div class="wrap">
-      <div class="vm-grid reveal">
-        <div class="vm-card">
-          <span class="eyebrow">Vision</span>
-          <h3>A globally recognized group.</h3>
-          <p>To become a globally recognized diversified holding group, delivering integrated and innovative solutions
-            across logistics, healthcare, industrial services, trade, and business advisory — creating lasting value for
-            stakeholders and contributing to sustainable economic progress across the markets we serve.</p>
-        </div>
-        <div class="vm-card">
-          <span class="eyebrow">Mission</span>
-          <h3>Integrated, value-driven solutions.</h3>
-          <p>To deliver integrated, innovative, and value-driven solutions across our diverse portfolio of businesses by
-            fostering excellence, embracing technology, developing exceptional talent, and building strategic
-            partnerships — empowering our clients and creating sustainable value for our stakeholders.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="section-divider"></div>
 
-  <section id="values">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Core Values</span>
-        <h2>What guides every decision we make.</h2>
+<!-- VISION & MISSION -->
+<section class="alt" id="vision">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Company Vision &amp; Mission</span>
+      <h2>Building lasting value, deliberately.</h2>
+      <p>We exist to create meaningful, measurable impact for every stakeholder we serve &mdash; from clients to communities.</p>
+    </div>
+    <div class="vm-grid reveal">
+      <div class="vm-card">
+        <div class="vm-icon">&#127760;</div>
+        <span class="eyebrow">Vision</span>
+        <h3>A globally recognized group.</h3>
+        <p>To become a globally recognized diversified holding group, delivering integrated and innovative solutions across logistics, healthcare, industrial services, trade, and business advisory &mdash; creating lasting value for stakeholders and contributing to sustainable economic progress across the markets we serve.</p>
       </div>
-      <div class="values-grid">
-        <div class="value-card reveal">
-          <div class="value-mark">I</div>
-          <h3>Integrity &amp; Excellence</h3>
-          <p>We uphold the highest standards of honesty, transparency, and ethical conduct in every decision and
-            relationship — and strive for excellence in everything we do, delivering superior quality, operational
-            efficiency, and outstanding results.</p>
-        </div>
-        <div class="value-card reveal">
-          <div class="value-mark">II</div>
-          <h3>Innovation &amp; Responsibility</h3>
-          <p>We embrace creativity, technology, and continuous improvement to develop forward-thinking solutions that
-            create lasting value, while conducting our business responsibly for the benefit of our stakeholders and
-            communities.</p>
-        </div>
+      <div class="vm-card">
+        <div class="vm-icon">&#127919;</div>
+        <span class="eyebrow">Mission</span>
+        <h3>Integrated, value-driven solutions.</h3>
+        <p>To deliver integrated, innovative, and value-driven solutions across our diverse portfolio of businesses by fostering excellence, embracing technology, developing exceptional talent, and building strategic partnerships &mdash; empowering our clients and creating sustainable value for our stakeholders.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="alt" id="services">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">What We Do</span>
-        <h2>Our Services</h2>
+<!-- CORE VALUES -->
+<section id="values">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Core Values</span>
+      <h2>What guides every decision we make.</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-mark">I</div>
+        <h3>Integrity &amp; Excellence</h3>
+        <p>We uphold the highest standards of honesty, transparency, and ethical conduct in every decision and relationship &mdash; and strive for excellence in everything we do, delivering superior quality, operational efficiency, and outstanding results.</p>
       </div>
-      <div class="services-list reveal">
-        <div class="service-row">
-          <span class="service-index">01</span>
+      <div class="value-card reveal">
+        <div class="value-mark">II</div>
+        <h3>Innovation &amp; Responsibility</h3>
+        <p>We embrace creativity, technology, and continuous improvement to develop forward-thinking solutions that create lasting value, while conducting our business responsibly for the benefit of our stakeholders and communities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SERVICES -->
+<section class="alt" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">What We Do</span>
+      <h2>Our Services</h2>
+      <p>End-to-end solutions designed for businesses at every stage of their growth journey.</p>
+    </div>
+    <div class="services-grid">
+      <!-- Wide featured card -->
+      <div class="service-card wide reveal">
+        <div class="service-img">
+          <img src="images/advisory.png" alt="Business consultancy strategy session" loading="lazy">
+        </div>
+        <div class="service-body">
+          <div class="service-index">01</div>
           <h3>Business Consultancy</h3>
-          <p>Strategic advisory that turns ambition into a workable plan for sustainable growth.</p>
+          <p>Strategic advisory that turns your vision into a workable plan for sustainable growth. We partner with leadership teams to diagnose challenges, design solutions, and execute strategies that deliver lasting competitive advantage across every market you operate in.</p>
+          <span class="service-arrow">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
         </div>
-        <div class="service-row">
-          <span class="service-index">02</span>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-img">
+          <img src="images/logistics.png" alt="Supply chain logistics" loading="lazy">
+        </div>
+        <div class="service-body">
+          <div class="service-index">02</div>
           <h3>Supply Chain Services</h3>
-          <p>End-to-end logistics and supply chain solutions built for reliability at scale.</p>
+          <p>End-to-end logistics and supply chain solutions built for reliability at global scale &mdash; optimized for speed, resilience, and cost efficiency.</p>
+          <span class="service-arrow">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
         </div>
-        <div class="service-row">
-          <span class="service-index">03</span>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-img">
+          <img src="images/advisory.png" alt="Corporate governance" loading="lazy" style="object-position:right center">
+        </div>
+        <div class="service-body">
+          <div class="service-index">03</div>
           <h3>Corporate Governance</h3>
-          <p>Frameworks and oversight that keep organizations accountable, transparent, and resilient.</p>
+          <p>Robust frameworks and oversight that keep organizations accountable, transparent, and resilient in the face of evolving regulatory environments.</p>
+          <span class="service-arrow">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
         </div>
-        <div class="service-row">
-          <span class="service-index">04</span>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-img">
+          <img src="images/about_team.png" alt="Business excellence" loading="lazy">
+        </div>
+        <div class="service-body">
+          <div class="service-index">04</div>
           <h3>Business Excellence</h3>
-          <p>Operational improvement programs focused on quality, efficiency, and measurable results.</p>
+          <p>Operational improvement programs focused on quality, efficiency, and measurable results that transform how organizations perform.</p>
+          <span class="service-arrow">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
         </div>
-        <div class="service-row">
-          <span class="service-index">05</span>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-img">
+          <img src="images/hero_visual.png" alt="EdTech digital learning" loading="lazy">
+        </div>
+        <div class="service-body">
+          <div class="service-index">05</div>
           <h3>EdTech Services</h3>
-          <p>Technology-driven learning and development solutions for exceptional talent.</p>
+          <p>Technology-driven learning and development solutions that cultivate exceptional talent and create agile, future-ready organizations.</p>
+          <span class="service-arrow">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="why">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Why Choose Us</span>
-        <h2>A strategic business partner.</h2>
+<!-- WHY CHOOSE US -->
+<section id="why">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why Choose Us</span>
+      <h2>A strategic business partner you can trust.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-num">01</div>
+        <h3>Strategic Partnership</h3>
+        <p>We go beyond consulting by partnering with our clients to understand their vision, overcome challenges, and achieve sustainable business growth at every level.</p>
       </div>
-      <div class="why-grid">
-        <div class="why-card reveal">
-          <div class="why-num">01</div>
-          <h3>Strategic Business Partner</h3>
-          <p>We go beyond consulting by partnering with our clients to understand their vision, overcome challenges, and
-            achieve sustainable business growth.</p>
-        </div>
-        <div class="why-card reveal">
-          <div class="why-num">02</div>
-          <h3>Industry Expertise</h3>
-          <p>Our team brings extensive practical experience across diverse industries, combining strategic insight with
-            operational excellence.</p>
-        </div>
-        <div class="why-card reveal">
-          <div class="why-num">03</div>
-          <h3>Innovation-Driven Approach</h3>
-          <p>We leverage modern technologies, data-driven strategies, and global best practices to help organizations
-            stay competitive.</p>
-        </div>
+      <div class="why-card reveal">
+        <div class="why-num">02</div>
+        <h3>Industry Expertise</h3>
+        <p>Our team brings extensive practical experience across diverse industries, combining strategic insight with deep operational excellence and market intelligence.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num">03</div>
+        <h3>Innovation-Driven</h3>
+        <p>We leverage modern technologies, data-driven strategies, and global best practices to help organizations stay competitive and future-ready.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="contact-section" id="contact">
-    <div class="wrap">
-      <div class="contact-inner">
-        <div class="reveal">
-          <span class="eyebrow">Contact Us</span>
-          <p class="big-quote" style="margin-top:1.4rem;">"Together, we can achieve more."</p>
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="reveal-left">
+        <span class="eyebrow">Contact Us</span>
+        <h2 class="contact-left-h">Together, we can<br><em style="font-style:italic;color:var(--copper-lt)">achieve more.</em></h2>
+        <p style="color:var(--muted);line-height:1.8">Ready to transform your business? Our team of experts is here to help you navigate complex challenges and unlock sustainable growth opportunities.</p>
+        <div class="contact-cards">
+          <a href="tel:+919633253192" class="contact-card">
+            <div class="contact-card-icon">&#128222;</div>
+            <div>
+              <div class="contact-card-label">Phone</div>
+              <div class="contact-card-value">+91 96332 53192</div>
+            </div>
+          </a>
+          <a href="mailto:info@masteryandprecise.com" class="contact-card">
+            <div class="contact-card-icon">&#9993;</div>
+            <div>
+              <div class="contact-card-label">Email</div>
+              <div class="contact-card-value">info@masteryandprecise.com</div>
+            </div>
+          </a>
+          <a href="https://www.masteryandprecise.com" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-card-icon">&#127760;</div>
+            <div>
+              <div class="contact-card-label">Website</div>
+              <div class="contact-card-value">www.masteryandprecise.com</div>
+            </div>
+          </a>
         </div>
-        <ul class="contact-list reveal">
-          <li>
-            <span class="label">Phone</span>
-            <a class="value" href="tel:+919633253192">+91 96332 53192</a>
-          </li>
-          <li>
-            <span class="label">Email</span>
-            <a class="value" href="mailto:info@masteryandprecise.com">info@masteryandprecise.com</a>
-          </li>
-          <li>
-            <span class="label">Website</span>
-            <a class="value" href="https://www.masteryandprecise.com">www.masteryandprecise.com</a>
-          </li>
+      </div>
+      <div class="contact-cta-block reveal-right">
+        <div style="font-size:3rem;margin-bottom:1rem">&#129309;</div>
+        <h3>Let&rsquo;s Build Something Extraordinary</h3>
+        <p>Whether you&rsquo;re looking to scale operations, enter new markets, or transform your business model &mdash; we have the expertise and network to make it happen.</p>
+        <a href="mailto:info@masteryandprecise.com" class="btn btn-primary" style="display:inline-flex;margin:0 auto">
+          Start the Conversation
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo" style="margin-bottom:.8rem">
+          <div class="logo-badge" style="width:32px;height:32px;font-size:.68rem">M&amp;P</div>
+          Mastery <span class="amp">&amp;</span> Precise
+        </div>
+        <p>A multidisciplinary consulting organization helping businesses achieve sustainable growth through strategic advisory, operational excellence, and digital transformation.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#who">Who We Are</a></li>
+          <li><a href="#vision">Vision &amp; Mission</a></li>
+          <li><a href="#services">Our Services</a></li>
+          <li><a href="#why">Why Choose Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Business Consultancy</a></li>
+          <li><a href="#services">Supply Chain</a></li>
+          <li><a href="#services">Corporate Governance</a></li>
+          <li><a href="#services">Business Excellence</a></li>
+          <li><a href="#services">EdTech Services</a></li>
         </ul>
       </div>
     </div>
-  </section>
-
-  <footer>
-    <div class="wrap">
-      <p class="tagline">Together, we can achieve more.</p>
-      <p class="fine">© <span id="year"></span> Mastery &amp; Precise Business House Private Limited</p>
+    <div class="footer-bottom">
+      <p class="footer-tagline">Together, we can achieve more.</p>
+      <p>&copy; <span id="year"></span> Mastery &amp; Precise Business House Private Limited. All rights reserved.</p>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    // mobile menu
-    const toggle = document.getElementById('menuToggle');
-    const navlinks = document.getElementById('navlinks');
-    toggle.addEventListener('click', () => {
-      const open = navlinks.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open);
-    });
-    navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      navlinks.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-    }));
+  // Sticky header
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 60));
 
-    // scroll reveal
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Mobile menu
+  const toggle = document.getElementById('menuToggle');
+  const navlinks = document.getElementById('navlinks');
+  toggle.addEventListener('click', () => {
+    const open = navlinks.classList.toggle('open');
+    toggle.classList.toggle('active', open);
+    toggle.setAttribute('aria-expanded', open);
+  });
+  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navlinks.classList.remove('open');
+    toggle.classList.remove('active');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
 
-    // network signature graphic
-    (function () {
-      const svgNS = "http://www.w3.org/2000/svg";
-      const edgesG = document.querySelector('.edges');
-      const nodesG = document.querySelector('.nodes');
-      const center = { x: 250, y: 250 };
-      const sectors = [
-        { label: 'Advisory', angle: -90 },
-        { label: 'Logistics', angle: -18 },
-        { label: 'Trade', angle: 54 },
-        { label: 'Healthcare', angle: 126 },
-        { label: 'Industrial', angle: 198 }
-      ];
-      const R = 175;
-      const points = sectors.map(s => {
-        const rad = s.angle * Math.PI / 180;
-        return {
-          x: center.x + R * Math.cos(rad),
-          y: center.y + R * Math.sin(rad),
-          label: s.label
-        };
-      });
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => io.observe(el));
 
-      // edges (center to each node, plus a ring connecting neighbors)
-      points.forEach((p, i) => {
-        const line = document.createElementNS(svgNS, 'line');
-        line.setAttribute('x1', center.x); line.setAttribute('y1', center.y);
-        line.setAttribute('x2', p.x); line.setAttribute('y2', p.y);
-        line.setAttribute('class', 'edge');
-        edgesG.appendChild(line);
-
-        const next = points[(i + 1) % points.length];
-        const ring = document.createElementNS(svgNS, 'line');
-        ring.setAttribute('x1', p.x); ring.setAttribute('y1', p.y);
-        ring.setAttribute('x2', next.x); ring.setAttribute('y2', next.y);
-        ring.setAttribute('class', 'edge');
-        ring.setAttribute('opacity', '0.5');
-        edgesG.appendChild(ring);
-      });
-
-      // center node
-      const cdot = document.createElementNS(svgNS, 'circle');
-      cdot.setAttribute('cx', center.x); cdot.setAttribute('cy', center.y);
-      cdot.setAttribute('r', 26);
-      cdot.setAttribute('class', 'node-dot center');
-      nodesG.appendChild(cdot);
-      const ctext = document.createElementNS(svgNS, 'text');
-      ctext.setAttribute('x', center.x); ctext.setAttribute('y', center.y + 4);
-      ctext.setAttribute('text-anchor', 'middle');
-      ctext.setAttribute('class', 'node-label center');
-      ctext.textContent = 'M & P';
-      nodesG.appendChild(ctext);
-
-      // outer nodes + labels
-      points.forEach(p => {
-        const dot = document.createElementNS(svgNS, 'circle');
-        dot.setAttribute('cx', p.x); dot.setAttribute('cy', p.y);
-        dot.setAttribute('r', 5.5);
-        dot.setAttribute('class', 'node-dot');
-        nodesG.appendChild(dot);
-
-        const lx = center.x + (p.x - center.x) * 1.16;
-        const ly = center.y + (p.y - center.y) * 1.16;
-        const text = document.createElementNS(svgNS, 'text');
-        text.setAttribute('x', lx); text.setAttribute('y', ly);
-        text.setAttribute('text-anchor', 'middle');
-        text.setAttribute('class', 'node-label');
-        text.textContent = p.label;
-        nodesG.appendChild(text);
-      });
-
-      // traveling pulses along center->node edges
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (!reduceMotion) {
-        points.forEach((p, i) => {
-          const pulse = document.createElementNS(svgNS, 'circle');
-          pulse.setAttribute('r', 3.2);
-          pulse.setAttribute('class', 'pulse');
-          pulse.setAttribute('opacity', '0');
-          nodesG.appendChild(pulse);
-
-          let t = (i / points.length);
-          const duration = 3200;
-          const delay = i * 500;
-          function animate(ts) {
-            if (!animate.start) animate.start = ts + delay;
-            const elapsed = (ts - animate.start);
-            if (elapsed < 0) { requestAnimationFrame(animate); return; }
-            const progress = (elapsed % duration) / duration;
-            const x = center.x + (p.x - center.x) * progress;
-            const y = center.y + (p.y - center.y) * progress;
-            pulse.setAttribute('cx', x);
-            pulse.setAttribute('cy', y);
-            const op = Math.sin(progress * Math.PI);
-            pulse.setAttribute('opacity', op.toFixed(2));
-            requestAnimationFrame(animate);
+  // Particle canvas - light copper tones
+  (function() {
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles;
+    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+    window.addEventListener('resize', () => { resize(); init(); });
+    resize();
+    function init() {
+      particles = Array.from({length: 45}, () => ({
+        x: Math.random()*W, y: Math.random()*H,
+        vx: (Math.random()-.5)*.25, vy: (Math.random()-.5)*.25,
+        r: Math.random()*1.8+.5, alpha: Math.random()*.25+.06
+      }));
+    }
+    init();
+    function draw() {
+      ctx.clearRect(0,0,W,H);
+      for(let i=0;i<particles.length;i++) {
+        for(let j=i+1;j<particles.length;j++) {
+          const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y;
+          const dist=Math.sqrt(dx*dx+dy*dy);
+          if(dist<130) {
+            ctx.beginPath(); ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(particles[j].x,particles[j].y);
+            ctx.strokeStyle=`rgba(181,102,58,${(1-dist/130)*.1})`; ctx.lineWidth=0.6; ctx.stroke();
           }
-          requestAnimationFrame(animate);
-        });
+        }
       }
-    })();
-  </script>
+      particles.forEach(p => {
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle=`rgba(181,102,58,${p.alpha})`; ctx.fill();
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.x<0) p.x=W; if(p.x>W) p.x=0;
+        if(p.y<0) p.y=H; if(p.y>H) p.y=0;
+      });
+      requestAnimationFrame(draw);
+    }
+    if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches) draw();
+  })();
 
+  // Hero network SVG
+  (function() {
+    const svgNS="http://www.w3.org/2000/svg";
+    const edgesG=document.querySelector('.edges');
+    const nodesG=document.querySelector('.nodes');
+    const center={x:250,y:250};
+    const sectors=[
+      {label:'Advisory',angle:-90},{label:'Logistics',angle:-18},
+      {label:'Trade',angle:54},{label:'Healthcare',angle:126},{label:'Industrial',angle:198}
+    ];
+    const R=160;
+    const points=sectors.map(s => {
+      const rad=s.angle*Math.PI/180;
+      return {x:center.x+R*Math.cos(rad),y:center.y+R*Math.sin(rad),label:s.label};
+    });
+    points.forEach((p,i) => {
+      const line=document.createElementNS(svgNS,'line');
+      line.setAttribute('x1',center.x); line.setAttribute('y1',center.y);
+      line.setAttribute('x2',p.x); line.setAttribute('y2',p.y); line.setAttribute('class','edge');
+      edgesG.appendChild(line);
+      const next=points[(i+1)%points.length];
+      const ring=document.createElementNS(svgNS,'line');
+      ring.setAttribute('x1',p.x); ring.setAttribute('y1',p.y);
+      ring.setAttribute('x2',next.x); ring.setAttribute('y2',next.y);
+      ring.setAttribute('class','edge'); ring.setAttribute('opacity','0.5');
+      edgesG.appendChild(ring);
+    });
+    const cGlow=document.createElementNS(svgNS,'circle');
+    cGlow.setAttribute('cx',center.x); cGlow.setAttribute('cy',center.y);
+    cGlow.setAttribute('r',42); cGlow.setAttribute('fill','rgba(181,102,58,0.1)');
+    nodesG.appendChild(cGlow);
+    const cdot=document.createElementNS(svgNS,'circle');
+    cdot.setAttribute('cx',center.x); cdot.setAttribute('cy',center.y);
+    cdot.setAttribute('r',24); cdot.setAttribute('class','node-dot center');
+    nodesG.appendChild(cdot);
+    const ctext=document.createElementNS(svgNS,'text');
+    ctext.setAttribute('x',center.x); ctext.setAttribute('y',center.y+5);
+    ctext.setAttribute('text-anchor','middle'); ctext.setAttribute('class','node-label center');
+    ctext.textContent='M & P'; nodesG.appendChild(ctext);
+    points.forEach(p => {
+      const glow=document.createElementNS(svgNS,'circle');
+      glow.setAttribute('cx',p.x); glow.setAttribute('cy',p.y);
+      glow.setAttribute('r',18); glow.setAttribute('fill','rgba(181,102,58,0.07)');
+      nodesG.appendChild(glow);
+      const dot=document.createElementNS(svgNS,'circle');
+      dot.setAttribute('cx',p.x); dot.setAttribute('cy',p.y);
+      dot.setAttribute('r',6); dot.setAttribute('class','node-dot');
+      nodesG.appendChild(dot);
+      const lx=center.x+(p.x-center.x)*1.23, ly=center.y+(p.y-center.y)*1.23;
+      const text=document.createElementNS(svgNS,'text');
+      text.setAttribute('x',lx); text.setAttribute('y',ly);
+      text.setAttribute('text-anchor','middle'); text.setAttribute('class','node-label');
+      text.textContent=p.label; nodesG.appendChild(text);
+    });
+    if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
+      points.forEach((p,i) => {
+        const pulse=document.createElementNS(svgNS,'circle');
+        pulse.setAttribute('r',3.5); pulse.setAttribute('class','pulse'); pulse.setAttribute('opacity','0');
+        nodesG.appendChild(pulse);
+        const duration=2800, delay=i*480;
+        function animate(ts) {
+          if(!animate.start) animate.start=ts+delay;
+          const elapsed=ts-animate.start;
+          if(elapsed<0) { requestAnimationFrame(animate); return; }
+          const progress=(elapsed%duration)/duration;
+          pulse.setAttribute('cx',center.x+(p.x-center.x)*progress);
+          pulse.setAttribute('cy',center.y+(p.y-center.y)*progress);
+          pulse.setAttribute('opacity',Math.sin(progress*Math.PI).toFixed(2));
+          requestAnimationFrame(animate);
+        }
+        requestAnimationFrame(animate);
+      });
+    }
+  })();
+</script>
 </body>
-
 </html>
