@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mastery & Precise Business House — Connecting Purpose with Progress</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#0d1a24;
+    --navy-mid:#142838;
+    --navy-card:#182e40;
+    --copper:#c17a4d;
+    --copper-light:#e0a576;
+    --cream:#f3ece1;
+    --slate:#a9b8c4;
+    --line:rgba(243,236,225,0.09);
+    --radius:2px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--navy-deep);
+    color:var(--cream);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    line-height:1.12;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  .eyebrow{
+    font-family:'Space Grotesk', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--copper-light);
+    display:inline-flex;
+    align-items:center;
+    gap:0.6rem;
+  }
+  .eyebrow::before{
+    content:'';
+    width:22px;
+    height:1px;
+    background:var(--copper-light);
+    display:inline-block;
+  }
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 6vw;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    background:linear-gradient(to bottom, rgba(13,26,36,0.92), rgba(13,26,36,0));
+    backdrop-filter:blur(6px);
+  }
+  nav.wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-top:1.6rem;
+    padding-bottom:1.6rem;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-size:1.15rem;
+    letter-spacing:0.02em;
+  }
+  .logo span{color:var(--copper-light);}
+  .navlinks{
+    display:flex;
+    gap:2.4rem;
+    font-family:'Space Grotesk', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+  .navlinks a{
+    color:var(--slate);
+    position:relative;
+    padding-bottom:4px;
+    transition:color .25s ease;
+  }
+  .navlinks a:hover, .navlinks a:focus-visible{color:var(--cream);}
+  .navlinks a::after{
+    content:'';
+    position:absolute;
+    left:0; bottom:0;
+    width:0%;
+    height:1px;
+    background:var(--copper-light);
+    transition:width .3s ease;
+  }
+  .navlinks a:hover::after{width:100%;}
+  .navmenu-toggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding-top:6rem;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:3rem;
+    align-items:center;
+    width:100%;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 4.1rem);
+    color:var(--cream);
+    margin:1.1rem 0 1.6rem;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--copper-light);
+  }
+  .hero p.lede{
+    font-size:1.08rem;
+    color:var(--slate);
+    max-width:36em;
+    margin-bottom:2.2rem;
+  }
+  .cta-row{
+    display:flex;
+    gap:1rem;
+    flex-wrap:wrap;
+  }
+  .btn{
+    font-family:'Space Grotesk', monospace;
+    font-size:0.82rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:0.95rem 1.7rem;
+    border-radius:var(--radius);
+    display:inline-block;
+    transition:transform .25s ease, background .25s ease, border-color .25s ease;
+  }
+  .btn-primary{
+    background:var(--copper);
+    color:#12212d;
+    font-weight:500;
+  }
+  .btn-primary:hover{background:var(--copper-light); transform:translateY(-2px);}
+  .btn-ghost{
+    border:1px solid var(--line);
+    color:var(--cream);
+  }
+  .btn-ghost:hover{border-color:var(--copper-light); color:var(--copper-light); transform:translateY(-2px);}
+
+  /* network signature */
+  .network-wrap{
+    position:relative;
+    aspect-ratio:1/1;
+    max-width:520px;
+    justify-self:center;
+  }
+  .network-wrap svg{width:100%; height:100%;}
+  .node-label{
+    font-family:'Space Grotesk', monospace;
+    font-size:11px;
+    letter-spacing:0.04em;
+    fill:var(--slate);
+  }
+  .node-label.center{fill:var(--cream); font-size:12px;}
+  .pulse{
+    fill:var(--copper-light);
+  }
+  .edge{
+    stroke:var(--line);
+    stroke-width:1;
+  }
+  .node-dot{
+    fill:var(--navy-card);
+    stroke:var(--copper-light);
+    stroke-width:1.3;
+  }
+  .node-dot.center{
+    fill:var(--copper);
+    stroke:none;
+  }
+
+  /* ---------- SECTION GENERAL ---------- */
+  section{
+    padding:7.5rem 0;
+    position:relative;
+  }
+  section.alt{background:var(--navy-mid);}
+  .section-head{
+    max-width:640px;
+    margin-bottom:3.5rem;
+  }
+  .section-head h2{
+    font-size:clamp(1.8rem, 3.4vw, 2.6rem);
+    margin-top:0.9rem;
+    color:var(--cream);
+  }
+  .reveal{
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- WHO WE ARE ---------- */
+  .who-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:4rem;
+    align-items:start;
+  }
+  .who-grid p{
+    color:var(--slate);
+    font-size:1.02rem;
+    margin-bottom:1.2rem;
+  }
+  .big-quote{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.5rem;
+    color:var(--cream);
+    line-height:1.4;
+    border-left:2px solid var(--copper);
+    padding-left:1.6rem;
+  }
+
+  /* ---------- VISION / MISSION ---------- */
+  .vm-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .vm-card{
+    background:var(--navy-deep);
+    padding:3rem 2.6rem;
+  }
+  section.alt .vm-card{background:var(--navy-mid);}
+  .vm-card .eyebrow{margin-bottom:1rem;}
+  .vm-card h3{font-size:1.5rem; margin-bottom:1.1rem; color:var(--cream);}
+  .vm-card p{color:var(--slate);}
+
+  /* ---------- CORE VALUES ---------- */
+  .values-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:3rem;
+  }
+  .value-card{
+    padding:2.6rem;
+    background:var(--navy-card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    transition:border-color .3s ease, transform .3s ease;
+  }
+  .value-card:hover{border-color:var(--copper); transform:translateY(-4px);}
+  .value-mark{
+    width:44px; height:44px;
+    border:1px solid var(--copper-light);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:1.4rem;
+    color:var(--copper-light);
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.1rem;
+  }
+  .value-card h3{font-size:1.3rem; margin-bottom:0.8rem; color:var(--cream);}
+  .value-card p{color:var(--slate);}
+
+  /* ---------- SERVICES ---------- */
+  .services-list{
+    border-top:1px solid var(--line);
+  }
+  .service-row{
+    display:grid;
+    grid-template-columns:80px 1fr 1.3fr;
+    gap:2rem;
+    align-items:center;
+    padding:2rem 0;
+    border-bottom:1px solid var(--line);
+    transition:background .3s ease;
+  }
+  .service-row:hover{background:rgba(243,236,225,0.02);}
+  .service-index{
+    font-family:'Space Grotesk', monospace;
+    font-size:0.78rem;
+    color:var(--copper-light);
+    letter-spacing:0.05em;
+  }
+  .service-row h3{
+    font-size:1.35rem;
+    color:var(--cream);
+    font-weight:500;
+  }
+  .service-row p{color:var(--slate); font-size:0.96rem;}
+
+  /* ---------- WHY CHOOSE US ---------- */
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:2.5rem;
+  }
+  .why-card h3{
+    font-size:1.25rem;
+    color:var(--cream);
+    margin:1.4rem 0 0.8rem;
+  }
+  .why-card p{color:var(--slate); font-size:0.96rem;}
+  .why-num{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:2.2rem;
+    color:var(--copper);
+    opacity:0.85;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-section{
+    background:var(--navy-mid);
+    position:relative;
+  }
+  .contact-inner{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:4rem;
+    align-items:center;
+  }
+  .contact-inner .big-quote{margin-bottom:0;}
+  .contact-list{list-style:none;}
+  .contact-list li{
+    border-top:1px solid var(--line);
+    padding:1.5rem 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:1rem;
+  }
+  .contact-list li:last-child{border-bottom:1px solid var(--line);}
+  .contact-list .label{
+    font-family:'Space Grotesk', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--slate);
+  }
+  .contact-list .value{
+    font-family:'Fraunces', serif;
+    font-size:1.2rem;
+    color:var(--cream);
+  }
+  .contact-list a.value:hover{color:var(--copper-light);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:3.5rem 0 2.5rem;
+    text-align:center;
+  }
+  footer .tagline{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.4rem;
+    color:var(--cream);
+    margin-bottom:1.6rem;
+  }
+  footer .fine{
+    font-family:'Space Grotesk', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.08em;
+    color:var(--slate);
+    text-transform:uppercase;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 880px){
+    .navlinks{
+      position:fixed;
+      top:0; right:0;
+      height:100vh;
+      width:min(78vw,320px);
+      background:var(--navy-mid);
+      flex-direction:column;
+      justify-content:center;
+      align-items:flex-start;
+      gap:2rem;
+      padding:2rem 2.4rem;
+      transform:translateX(100%);
+      transition:transform .35s ease;
+      border-left:1px solid var(--line);
+    }
+    .navlinks.open{transform:translateX(0);}
+    .navmenu-toggle{
+      display:flex;
+      flex-direction:column;
+      gap:5px;
+      background:none;
+      border:none;
+      cursor:pointer;
+      z-index:110;
+      padding:8px;
+    }
+    .navmenu-toggle span{
+      width:22px; height:1.5px;
+      background:var(--cream);
+      display:block;
+    }
+    .hero-grid{grid-template-columns:1fr;}
+    .network-wrap{max-width:340px; margin-top:2rem;}
+    .who-grid{grid-template-columns:1fr; gap:2.2rem;}
+    .vm-grid{grid-template-columns:1fr;}
+    .values-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr;}
+    .service-row{grid-template-columns:50px 1fr; grid-template-areas:"idx title" "desc desc";}
+    .service-index{grid-area:idx;}
+    .service-row h3{grid-area:title;}
+    .service-row p{grid-area:desc;}
+    .contact-inner{grid-template-columns:1fr;}
+    section{padding:5rem 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="logo">Mastery <span>&amp;</span> Precise</a>
+    <button class="navmenu-toggle" aria-label="Toggle menu" aria-expanded="false" id="menuToggle">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="navlinks" id="navlinks">
+      <a href="#who">Who We Are</a>
+      <a href="#vision">Vision &amp; Mission</a>
+      <a href="#services">Our Services</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Business House Private Limited</span>
+      <h1>Connecting <em>purpose</em><br>with progress.</h1>
+      <p class="lede">Mastery &amp; Precise Business House Private Limited is a multidisciplinary consulting organization helping businesses achieve sustainable growth through strategic advisory, operational excellence, digital transformation, and professional development.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-primary">Start a conversation</a>
+        <a href="#services" class="btn btn-ghost">See our services</a>
+      </div>
+    </div>
+
+    <div class="network-wrap" aria-hidden="true">
+      <svg viewBox="0 0 500 500">
+        <g class="edges"></g>
+        <g class="nodes"></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="who">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Who We Are</span>
+      <h2>A partner across every stage of growth.</h2>
+    </div>
+    <div class="who-grid">
+      <div class="reveal">
+        <p>Our experienced consultants combine industry expertise with innovative thinking to deliver measurable business outcomes across multiple sectors — from logistics and healthcare to industrial services, trade, and business advisory.</p>
+        <p>At Mastery &amp; Precise, our strength lies in our people: a diverse team of professionals, industry experts, consultants, and strategic advisors who work collaboratively with clients to understand their challenges, identify opportunities, and implement practical strategies for sustainable growth.</p>
+      </div>
+      <div class="reveal">
+        <p class="big-quote">"Our people are our greatest asset. Through expertise, integrity, and collaboration, we help organizations transform challenges into opportunities."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="vision">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Company Vision &amp; Mission</span>
+      <h2>Building lasting value, deliberately.</h2>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="vm-grid reveal">
+      <div class="vm-card">
+        <span class="eyebrow">Vision</span>
+        <h3>A globally recognized group.</h3>
+        <p>To become a globally recognized diversified holding group, delivering integrated and innovative solutions across logistics, healthcare, industrial services, trade, and business advisory — creating lasting value for stakeholders and contributing to sustainable economic progress across the markets we serve.</p>
+      </div>
+      <div class="vm-card">
+        <span class="eyebrow">Mission</span>
+        <h3>Integrated, value-driven solutions.</h3>
+        <p>To deliver integrated, innovative, and value-driven solutions across our diverse portfolio of businesses by fostering excellence, embracing technology, developing exceptional talent, and building strategic partnerships — empowering our clients and creating sustainable value for our stakeholders.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="values">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Core Values</span>
+      <h2>What guides every decision we make.</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-mark">I</div>
+        <h3>Integrity &amp; Excellence</h3>
+        <p>We uphold the highest standards of honesty, transparency, and ethical conduct in every decision and relationship — and strive for excellence in everything we do, delivering superior quality, operational efficiency, and outstanding results.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-mark">II</div>
+        <h3>Innovation &amp; Responsibility</h3>
+        <p>We embrace creativity, technology, and continuous improvement to develop forward-thinking solutions that create lasting value, while conducting our business responsibly for the benefit of our stakeholders and communities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">What We Do</span>
+      <h2>Our Services</h2>
+    </div>
+    <div class="services-list reveal">
+      <div class="service-row">
+        <span class="service-index">01</span>
+        <h3>Business Consultancy</h3>
+        <p>Strategic advisory that turns ambition into a workable plan for sustainable growth.</p>
+      </div>
+      <div class="service-row">
+        <span class="service-index">02</span>
+        <h3>Supply Chain Services</h3>
+        <p>End-to-end logistics and supply chain solutions built for reliability at scale.</p>
+      </div>
+      <div class="service-row">
+        <span class="service-index">03</span>
+        <h3>Corporate Governance</h3>
+        <p>Frameworks and oversight that keep organizations accountable, transparent, and resilient.</p>
+      </div>
+      <div class="service-row">
+        <span class="service-index">04</span>
+        <h3>Business Excellence</h3>
+        <p>Operational improvement programs focused on quality, efficiency, and measurable results.</p>
+      </div>
+      <div class="service-row">
+        <span class="service-index">05</span>
+        <h3>EdTech Services</h3>
+        <p>Technology-driven learning and development solutions for exceptional talent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why Choose Us</span>
+      <h2>A strategic business partner.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-num">01</div>
+        <h3>Strategic Business Partner</h3>
+        <p>We go beyond consulting by partnering with our clients to understand their vision, overcome challenges, and achieve sustainable business growth.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num">02</div>
+        <h3>Industry Expertise</h3>
+        <p>Our team brings extensive practical experience across diverse industries, combining strategic insight with operational excellence.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num">03</div>
+        <h3>Innovation-Driven Approach</h3>
+        <p>We leverage modern technologies, data-driven strategies, and global best practices to help organizations stay competitive.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="reveal">
+        <span class="eyebrow">Contact Us</span>
+        <p class="big-quote" style="margin-top:1.4rem;">"Together, we can achieve more."</p>
+      </div>
+      <ul class="contact-list reveal">
+        <li>
+          <span class="label">Phone</span>
+          <a class="value" href="tel:+919633253192">+91 96332 53192</a>
+        </li>
+        <li>
+          <span class="label">Email</span>
+          <a class="value" href="mailto:info@masteryandprecise.com">info@masteryandprecise.com</a>
+        </li>
+        <li>
+          <span class="label">Website</span>
+          <a class="value" href="https://www.masteryandprecise.com">www.masteryandprecise.com</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="tagline">Together, we can achieve more.</p>
+    <p class="fine">© <span id="year"></span> Mastery &amp; Precise Business House Private Limited</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // mobile menu
+  const toggle = document.getElementById('menuToggle');
+  const navlinks = document.getElementById('navlinks');
+  toggle.addEventListener('click', () => {
+    const open = navlinks.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navlinks.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // network signature graphic
+  (function(){
+    const svgNS = "http://www.w3.org/2000/svg";
+    const edgesG = document.querySelector('.edges');
+    const nodesG = document.querySelector('.nodes');
+    const center = {x:250, y:250};
+    const sectors = [
+      {label:'Advisory', angle:-90},
+      {label:'Logistics', angle:-18},
+      {label:'Trade', angle:54},
+      {label:'Healthcare', angle:126},
+      {label:'Industrial', angle:198}
+    ];
+    const R = 175;
+    const points = sectors.map(s => {
+      const rad = s.angle * Math.PI/180;
+      return {
+        x: center.x + R*Math.cos(rad),
+        y: center.y + R*Math.sin(rad),
+        label: s.label
+      };
+    });
+
+    // edges (center to each node, plus a ring connecting neighbors)
+    points.forEach((p, i) => {
+      const line = document.createElementNS(svgNS,'line');
+      line.setAttribute('x1', center.x); line.setAttribute('y1', center.y);
+      line.setAttribute('x2', p.x); line.setAttribute('y2', p.y);
+      line.setAttribute('class','edge');
+      edgesG.appendChild(line);
+
+      const next = points[(i+1)%points.length];
+      const ring = document.createElementNS(svgNS,'line');
+      ring.setAttribute('x1', p.x); ring.setAttribute('y1', p.y);
+      ring.setAttribute('x2', next.x); ring.setAttribute('y2', next.y);
+      ring.setAttribute('class','edge');
+      ring.setAttribute('opacity','0.5');
+      edgesG.appendChild(ring);
+    });
+
+    // center node
+    const cdot = document.createElementNS(svgNS,'circle');
+    cdot.setAttribute('cx', center.x); cdot.setAttribute('cy', center.y);
+    cdot.setAttribute('r', 26);
+    cdot.setAttribute('class','node-dot center');
+    nodesG.appendChild(cdot);
+    const ctext = document.createElementNS(svgNS,'text');
+    ctext.setAttribute('x', center.x); ctext.setAttribute('y', center.y+4);
+    ctext.setAttribute('text-anchor','middle');
+    ctext.setAttribute('class','node-label center');
+    ctext.textContent = 'M & P';
+    nodesG.appendChild(ctext);
+
+    // outer nodes + labels
+    points.forEach(p => {
+      const dot = document.createElementNS(svgNS,'circle');
+      dot.setAttribute('cx', p.x); dot.setAttribute('cy', p.y);
+      dot.setAttribute('r', 5.5);
+      dot.setAttribute('class','node-dot');
+      nodesG.appendChild(dot);
+
+      const lx = center.x + (p.x-center.x)*1.16;
+      const ly = center.y + (p.y-center.y)*1.16;
+      const text = document.createElementNS(svgNS,'text');
+      text.setAttribute('x', lx); text.setAttribute('y', ly);
+      text.setAttribute('text-anchor','middle');
+      text.setAttribute('class','node-label');
+      text.textContent = p.label;
+      nodesG.appendChild(text);
+    });
+
+    // traveling pulses along center->node edges
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!reduceMotion){
+      points.forEach((p, i) => {
+        const pulse = document.createElementNS(svgNS,'circle');
+        pulse.setAttribute('r', 3.2);
+        pulse.setAttribute('class','pulse');
+        pulse.setAttribute('opacity','0');
+        nodesG.appendChild(pulse);
+
+        let t = (i / points.length);
+        const duration = 3200;
+        const delay = i * 500;
+        function animate(ts){
+          if(!animate.start) animate.start = ts + delay;
+          const elapsed = (ts - animate.start);
+          if(elapsed < 0){ requestAnimationFrame(animate); return; }
+          const progress = (elapsed % duration) / duration;
+          const x = center.x + (p.x-center.x)*progress;
+          const y = center.y + (p.y-center.y)*progress;
+          pulse.setAttribute('cx', x);
+          pulse.setAttribute('cy', y);
+          const op = Math.sin(progress*Math.PI);
+          pulse.setAttribute('opacity', op.toFixed(2));
+          requestAnimationFrame(animate);
+        }
+        requestAnimationFrame(animate);
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
