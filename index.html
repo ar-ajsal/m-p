@@ -59,6 +59,14 @@
       overflow-x: hidden
     }
 
+    mark {
+      background: linear-gradient(120deg, var(--copper-gw), rgba(201, 135, 10, 0.15));
+      color: var(--copper);
+      padding: 0 0.15em;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
     @media(prefers-reduced-motion:reduce) {
 
       *,
@@ -1603,8 +1611,12 @@
   <!-- HEADER -->
   <header id="site-header">
     <nav class="wrap">
-      <a href="#top" class="logo" style="padding: 0.2rem 0;">
-        <img src="images/logo.png" alt="M&amp;P Logo" style="height: 44px; width: auto; object-fit: contain;">
+      <a href="#top" class="logo" style="padding: 0.2rem 0; gap: 1rem;">
+        <img src="images/logo.png" alt="M&amp;P Logo" style="height: 80px; width: auto; object-fit: contain;">
+        <div style="display: flex; flex-direction: column; justify-content: center;">
+          <span style="font-size: 1.5rem; font-weight: 600; line-height: 1.1;">Mastery <span class="amp">&amp;</span> Precise</span>
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em; color: var(--muted); margin-top: 4px; text-transform: uppercase;">Business House</span>
+        </div>
       </a>
       <button class="navmenu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -1632,7 +1644,7 @@
             <span>Business House Private Limited</span>
           </div>
           <h1>Connecting <em>purpose</em><br>with progress.</h1>
-          <p class="lede">Mastery &amp; Precise Business House is a multidisciplinary consulting organization helping
+          <p class="lede"><mark>Mastery &amp; Precise Business House</mark> is a multidisciplinary consulting organization helping
             businesses achieve sustainable growth through strategic advisory, operational excellence, digital
             transformation, and professional development.</p>
           <div class="cta-row">
@@ -1748,7 +1760,7 @@
           <p>Our experienced consultants combine deep industry expertise with innovative thinking to deliver measurable
             business outcomes across multiple sectors &mdash; from logistics and healthcare to industrial services,
             trade, and business advisory.</p>
-          <p>At Mastery &amp; Precise, our strength lies in our people: a diverse team of professionals, industry
+          <p>At <mark>Mastery &amp; Precise</mark>, our strength lies in our people: a diverse team of professionals, industry
             experts, consultants, and strategic advisors who work collaboratively with clients to understand their
             challenges, identify opportunities, and implement practical strategies for sustainable growth.</p>
           <blockquote class="big-quote">&ldquo;Our people are our greatest asset. Through expertise, integrity, and
@@ -2072,9 +2084,14 @@
     <div class="wrap">
       <div class="footer-inner">
         <div class="footer-brand">
-          <div class="logo"
-            style="margin-bottom:1rem; background:#fff; padding:0.5rem 0.8rem; border-radius:8px; display:inline-flex;">
-            <img src="images/logo.png" alt="M&amp;P Logo" style="height: 40px; width: auto; object-fit: contain;">
+          <div class="logo" style="margin-bottom:1rem; gap: 1rem; display:inline-flex;">
+            <div style="background:#fff; padding:0.5rem 0.8rem; border-radius:8px; display:inline-flex;">
+              <img src="images/logo.png" alt="M&amp;P Logo" style="height: 80px; width: auto; object-fit: contain;">
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+              <span style="font-size: 1.6rem; font-weight: 500; line-height: 1.1;">Mastery <span class="amp">&amp;</span> Precise</span>
+              <span style="font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.15em; color: rgba(255,255,255,0.6); margin-top: 4px; text-transform: uppercase;">Business House</span>
+            </div>
           </div>
           <p>A multidisciplinary consulting organization helping businesses achieve sustainable growth through strategic
             advisory, operational excellence, and digital transformation.</p>
@@ -2102,7 +2119,7 @@
       </div>
       <div class="footer-bottom">
         <p class="footer-tagline">Mastery in Vision. Precise in Action.</p>
-        <p>&copy; <span id="year"></span> Mastery &amp; Precise Business House Private Limited. All rights reserved.</p>
+        <p>&copy; <span id="year"></span> <mark>Mastery &amp; Precise Business House Private Limited</mark>. All rights reserved.</p>
       </div>
     </div>
   </footer>
