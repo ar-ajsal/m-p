@@ -793,6 +793,242 @@
       margin-top: 1.5rem
     }
 
+    /* ======================== LEADERSHIP TEAM ======================== */
+    .leadership-area {
+      margin-top: 5rem;
+      padding-top: 4.5rem;
+      border-top: 1.5px solid var(--line);
+    }
+
+    .leadership-area .section-head {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .leadership-area .section-head h2 {
+      font-family: "Fraunces", serif;
+      font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+      color: var(--navy);
+      margin: 0.8rem 0 0.6rem;
+    }
+
+    .leadership-area .section-head p {
+      color: var(--muted);
+      font-size: 1.02rem;
+      max-width: 560px;
+      margin-inline: auto;
+    }
+
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.2rem;
+    }
+
+    .leader-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--line);
+      transition: transform var(--tr), box-shadow var(--tr);
+      position: relative;
+    }
+
+    .leader-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .leader-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--copper), var(--gold));
+      opacity: 0;
+      transition: opacity var(--tr);
+      z-index: 2;
+    }
+
+    .leader-card:hover::before {
+      opacity: 1;
+    }
+
+    .leader-photo-wrap {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #e8e0d6, #d4cbc0);
+    }
+
+    .leader-photo {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform .7s ease;
+    }
+
+    .leader-card:hover .leader-photo {
+      transform: scale(1.04);
+    }
+
+    .leader-photo-wrap::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, transparent, rgba(255,255,255,0.08) 60%, rgba(255,255,255,0.5));
+      pointer-events: none;
+    }
+
+    .leader-info {
+      padding: 1.6rem 1.5rem 1.8rem;
+    }
+
+    .leader-name {
+      font-family: "Fraunces", serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.15rem;
+    }
+
+    .leader-meta {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .leader-role {
+      font-size: 0.86rem;
+      font-style: italic;
+      color: var(--copper);
+      margin-bottom: 1rem;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .leader-highlights {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .leader-highlights .tag {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.04em;
+      padding: 0.28rem 0.7rem;
+      border-radius: 100px;
+      background: var(--copper-gw);
+      color: var(--copper);
+      font-weight: 500;
+    }
+
+    .leader-details {
+      list-style: none;
+      padding: 0;
+    }
+
+    .leader-details li {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.55;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .leader-details li:last-child {
+      border-bottom: none;
+    }
+
+    .leader-details li strong {
+      color: var(--text);
+      font-weight: 500;
+      font-size: 0.78rem;
+    }
+
+    .leader-expand {
+      display: none;
+      padding-top: 0.5rem;
+    }
+
+    .leader-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.8rem;
+      background: none;
+      border: 1.5px solid var(--line-b);
+      border-radius: 100px;
+      color: var(--copper);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all var(--tr);
+      padding: 0.45rem 1.1rem;
+    }
+
+    .leader-toggle:hover {
+      background: var(--copper);
+      color: #fff;
+      border-color: var(--copper);
+    }
+
+    .leader-toggle .toggle-icon {
+      transition: transform var(--tr);
+      font-size: 0.65rem;
+    }
+
+    .leader-card.expanded .leader-expand {
+      display: block;
+      animation: leaderFadeIn 0.4s ease;
+    }
+
+    .leader-card.expanded .leader-toggle {
+      background: var(--copper);
+      color: #fff;
+      border-color: var(--copper);
+    }
+
+    .leader-card.expanded .toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    @keyframes leaderFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .leader-prev-companies {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.8rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--line);
+      line-height: 1.6;
+    }
+
+    .leader-prev-companies strong {
+      color: var(--text);
+      font-weight: 500;
+      font-size: 0.75rem;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
     /* ======================== VISION / MISSION — IMMERSIVE ======================== */
     .vm-section {
       padding: 0;
@@ -1626,6 +1862,18 @@
         gap: 1.5rem
       }
     }
+
+    @media (max-width: 900px) {
+      .leadership-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        margin-inline: auto;
+      }
+      .leadership-area {
+        margin-top: 3.5rem;
+        padding-top: 3rem;
+      }
+    }
   </style>
 </head>
 
@@ -1636,10 +1884,8 @@
   <!-- HEADER -->
   <header id="site-header">
     <nav class="wrap">
-      <a href="#top" class="logo" style="padding: 0.2rem 0; gap: 1rem;">
+      <a href="#top" class="logo" style="padding: 0.2rem 0;">
         <img src="images/logo.png" alt="M&amp;P Logo">
-        <span style="font-size: 1.5rem; font-weight: 600; line-height: 1.1;">Mastery <span class="amp">&amp;</span>
-          Precise</span>
       </a>
       <button class="navmenu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -1788,6 +2034,123 @@
             collaboration, we help organizations transform challenges into opportunities.&rdquo;</blockquote>
         </div>
       </div>
+
+      <!-- LEADERSHIP TEAM -->
+      <div class="leadership-area">
+        <div class="section-head reveal">
+          <span class="eyebrow">Our People</span>
+          <h2>Leadership Team</h2>
+          <p>Seasoned professionals driving strategic growth across logistics, supply chain, and business operations.</p>
+        </div>
+
+        <div class="leadership-grid">
+          <!-- Dr. Afzal Aziz -->
+          <div class="leader-card reveal">
+            <div class="leader-photo-wrap">
+              <img class="leader-photo" src="images/team_afzal.png" alt="Dr. Afzal Aziz - Global Logistics & Freight Forwarding Executive" loading="lazy">
+            </div>
+            <div class="leader-info">
+              <h3 class="leader-name">Dr. Afzal Aziz</h3>
+              <div class="leader-meta">Indian, 45</div>
+              <div class="leader-role">Global Logistics &amp; Freight Forwarding Executive</div>
+              <div class="leader-highlights">
+                <span class="tag">23+ Yrs Experience</span>
+                <span class="tag">Doctorate</span>
+                <span class="tag">MBA (UK)</span>
+              </div>
+              <ul class="leader-details">
+                <li><strong>Education &mdash;</strong> Doctorate in Strategic Supply Chain Leadership (Dunster Business School, Switzerland); Integrated Doctorate in Management (UCAM, Spain); MBA (Plymouth University, UK); B.Com (University of Calicut, India)</li>
+                <li><strong>Strengths &mdash;</strong> Strategic leadership, commercial acumen, data-driven decision-making, stakeholder management, high performance team building</li>
+              </ul>
+              <div class="leader-expand">
+                <ul class="leader-details">
+                  <li><strong>Skills &mdash;</strong> B2B &amp; B2C business strategy, pricing and P&amp;L ownership, negotiation, project management, operations optimization, KPI design, change management, customer relationship management</li>
+                  <li><strong>Languages &mdash;</strong> English, Arabic, Hindi, Malayalam, and Tamil</li>
+                </ul>
+                <div class="leader-prev-companies">
+                  <strong>Previous Companies</strong>
+                  MSC, TNT Express, Rajab Logistics, FedEx, Starlinks &amp; Naqel Express
+                </div>
+              </div>
+              <button class="leader-toggle" onclick="this.closest('.leader-card').classList.toggle('expanded')">
+                <span class="toggle-text">View Full Profile</span>
+                <span class="toggle-icon">&#9660;</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Arun Nelli -->
+          <div class="leader-card reveal">
+            <div class="leader-photo-wrap">
+              <img class="leader-photo" src="images/team_arun.png" alt="Arun Nelli - Supply Chain & Inventory Management Specialist" loading="lazy">
+            </div>
+            <div class="leader-info">
+              <h3 class="leader-name">Arun Nelli</h3>
+              <div class="leader-meta">Indian, 40</div>
+              <div class="leader-role">Supply Chain &amp; Inventory Management Specialist</div>
+              <div class="leader-highlights">
+                <span class="tag">15+ Yrs Experience</span>
+                <span class="tag">B.Com</span>
+                <span class="tag">Warehouse Ops</span>
+              </div>
+              <ul class="leader-details">
+                <li><strong>Education &mdash;</strong> Bachelors in Commerce, Shobhit University, India</li>
+                <li><strong>Strengths &mdash;</strong> Hands-on operational leadership, process design and optimization, analytical inventory control, adaptability, and people management in warehouse and fleet environments</li>
+              </ul>
+              <div class="leader-expand">
+                <ul class="leader-details">
+                  <li><strong>Skills &mdash;</strong> Inventory management, warehousing, retail logistics, transport and fleet coordination, supply merchandising, reporting and KPI dashboards, problem solving in supply chain, MS Office and related tools</li>
+                  <li><strong>Languages &mdash;</strong> English, Arabic, Hindi, Malayalam, Tamil &amp; Kannada</li>
+                </ul>
+                <div class="leader-prev-companies">
+                  <strong>Previous Companies</strong>
+                  Majid Al Futtaim, Al Mutlaq Co., Grace Engineering, SIEMENS, Dias &amp; Associates
+                </div>
+              </div>
+              <button class="leader-toggle" onclick="this.closest('.leader-card').classList.toggle('expanded')">
+                <span class="toggle-text">View Full Profile</span>
+                <span class="toggle-icon">&#9660;</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Nisar Kondadan -->
+          <div class="leader-card reveal">
+            <div class="leader-photo-wrap">
+              <img class="leader-photo" src="images/team_nisar.png" alt="Nisar Kondadan - Operations, Sales & Marketing Leader" loading="lazy">
+            </div>
+            <div class="leader-info">
+              <h3 class="leader-name">Nisar Kondadan</h3>
+              <div class="leader-meta">Indian, 40</div>
+              <div class="leader-role">Operations / Sales &amp; Marketing Leader</div>
+              <div class="leader-highlights">
+                <span class="tag">12+ Yrs Experience</span>
+                <span class="tag">M.Sc. Psychology</span>
+                <span class="tag">M.Ed. &amp; B.Ed.</span>
+              </div>
+              <ul class="leader-details">
+                <li><strong>Education &mdash;</strong> M.Sc. Psychology (Annamalai University, Chidambaram); M.A. Economics (Annamalai University); M.Ed. &amp; B.Ed. Social Science (MG / Calicut University); B.A. Economics (Calicut University)</li>
+                <li><strong>Strengths &mdash;</strong> End-to-end Marketing Strategy, Operational Efficiency, and Collaborative Partnerships</li>
+              </ul>
+              <div class="leader-expand">
+                <ul class="leader-details">
+                  <li><strong>Skills &mdash;</strong> Project sales and marketing, digital campaigns, tender and bid management, client onboarding, logistics coordination, stakeholder communication, team training and mentoring</li>
+                  <li><strong>Languages &mdash;</strong> English, Arabic, Hindi and Malayalam</li>
+                </ul>
+                <div class="leader-prev-companies">
+                  <strong>Previous Companies</strong>
+                  Al Mutlaq Co., Saudi GINTL, Arabian Innovation, Setilas OU &amp; Globe Link West Star Shipping Co.
+                </div>
+              </div>
+              <button class="leader-toggle" onclick="this.closest('.leader-card').classList.toggle('expanded')">
+                <span class="toggle-text">View Full Profile</span>
+                <span class="toggle-icon">&#9660;</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1950,10 +2313,6 @@
             <p>Strategic advisory that turns your vision into a workable plan for sustainable growth. We partner with
               leadership teams to diagnose challenges, design solutions, and execute strategies that deliver lasting
               competitive advantage across every market you operate in.</p>
-            <span class="service-arrow">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2.5">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg></span>
           </div>
         </div>
         <div class="service-card reveal">
@@ -1965,10 +2324,6 @@
             <h3>Supply Chain Services</h3>
             <p>End-to-end logistics and supply chain solutions built for reliability at global scale &mdash; optimized
               for speed, resilience, and cost efficiency.</p>
-            <span class="service-arrow">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2.5">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg></span>
           </div>
         </div>
         <div class="service-card reveal">
@@ -1980,10 +2335,6 @@
             <h3>Corporate Governance</h3>
             <p>Robust frameworks and oversight that keep organizations accountable, transparent, and resilient in the
               face of evolving regulatory environments.</p>
-            <span class="service-arrow">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2.5">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg></span>
           </div>
         </div>
         <div class="service-card reveal">
@@ -1995,10 +2346,6 @@
             <h3>Business Excellence</h3>
             <p>Operational improvement programs focused on quality, efficiency, and measurable results that transform
               how organizations perform.</p>
-            <span class="service-arrow">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2.5">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg></span>
           </div>
         </div>
         <div class="service-card reveal">
@@ -2010,10 +2357,6 @@
             <h3>EdTech Services</h3>
             <p>Technology-driven learning and development solutions that cultivate exceptional talent and create agile,
               future-ready organizations.</p>
-            <span class="service-arrow">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2.5">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg></span>
           </div>
         </div>
       </div>
@@ -2105,12 +2448,9 @@
     <div class="wrap">
       <div class="footer-inner">
         <div class="footer-brand">
-          <div class="logo" style="margin-bottom:1rem; gap: 1rem; display:inline-flex;">
-            <div style="background:#fff; padding:0.5rem 0.8rem; border-radius:8px; display:inline-flex;">
-              <img src="images/logo.png" alt="M&amp;P Logo" style="height: 80px; width: auto; object-fit: contain;">
-            </div>
-            <span style="font-size: 1.6rem; font-weight: 500; line-height: 1.1;">Mastery <span class="amp">&amp;</span>
-              Precise</span>
+          <div class="logo"
+            style="margin-bottom:1rem; background:#fff; padding:0.5rem 0.8rem; border-radius:8px; display:inline-flex;">
+            <img src="images/logo.png" alt="M&amp;P Logo" style="height: 120px; width: auto; object-fit: contain;">
           </div>
           <p>A multidisciplinary consulting organization helping businesses achieve sustainable growth through strategic
             advisory, operational excellence, and digital transformation.</p>
