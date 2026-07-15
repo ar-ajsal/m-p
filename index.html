@@ -55,12 +55,11 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;padding-t
 .logo-badge{width:36px;height:36px;background:linear-gradient(135deg,var(--copper),var(--gold));border-radius:10px;display:grid;place-items:center;font-size:.72rem;font-weight:700;color:#fff;flex-shrink:0;box-shadow:0 4px 16px var(--copper-gw);font-family:"Space Grotesk",sans-serif}
 .logo .amp{color:var(--copper-lt);margin:0 .1em}
 .navlinks{display:flex;gap:2rem;font-family:"Space Grotesk",sans-serif;font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;align-items:center}
-.navlinks a{color:var(--muted);position:relative;padding-bottom:3px;transition:color var(--tr)}
-.navlinks a::after{content:"";position:absolute;left:0;bottom:0;width:0%;height:1.5px;background:linear-gradient(90deg,var(--copper-lt),var(--gold));transition:width .3s ease}
-.navlinks a:hover{color:var(--navy)}
-.navlinks a:hover::after{width:100%}
+.navlinks a:not(.nav-cta){color:var(--muted);position:relative;padding-bottom:3px;transition:color var(--tr)}
+.navlinks a:not(.nav-cta)::after{content:"";position:absolute;left:0;bottom:0;width:0%;height:1.5px;background:linear-gradient(90deg,var(--copper-lt),var(--gold));transition:width .3s ease}
+.navlinks a:not(.nav-cta):hover{color:var(--navy)}
+.navlinks a:not(.nav-cta):hover::after{width:100%}
 .nav-cta{display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--copper),var(--copper-lt));color:#fff!important;font-weight:600;padding:.52rem 1.3rem;border-radius:50px;box-shadow:0 4px 16px var(--copper-gw);transition:transform var(--tr),box-shadow var(--tr)!important}
-.nav-cta::after{display:none!important}
 .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px var(--copper-gw)}
 .navmenu-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;z-index:210;padding:8px}
 .navmenu-toggle span{width:22px;height:1.5px;background:var(--navy);display:block;transition:transform .3s,opacity .3s}
@@ -154,7 +153,7 @@ section.alt{background:var(--bg-alt)}
 .vm-card-full{position:relative;min-height:520px;display:flex;align-items:center;overflow:hidden}
 .vm-card-full + .vm-card-full{border-top:1px solid rgba(255,255,255,.06)}
 .vm-card-bg{position:absolute;inset:0}
-.vm-card-bg img{width:100%;height:100%;object-fit:cover;transition:transform 8s ease}
+.vm-card-bg img{width:100%;height:100%;object-fit:cover;transition:transform 2.5s ease}
 .vm-card-full:hover .vm-card-bg img{transform:scale(1.06)}
 .vm-card-overlay{position:absolute;inset:0;z-index:1}
 .vm-card-full:nth-child(1) .vm-card-overlay{background:linear-gradient(135deg,rgba(13,26,36,.88) 0%,rgba(28,50,68,.75) 40%,rgba(181,102,58,.2) 100%)}
@@ -428,7 +427,6 @@ footer{padding:4.5rem 0 3rem;background:var(--navy);border-top:1px solid rgba(25
         <div class="vm-stat"><div class="vm-stat-num">&infin;</div><div class="vm-stat-label">Impact</div></div>
       </div>
     </div>
-    <div class="vm-card-icon-float">&#127760;</div>
     <div class="vm-card-decorline"></div>
   </div>
 
@@ -448,7 +446,6 @@ footer{padding:4.5rem 0 3rem;background:var(--navy);border-top:1px solid rgba(25
         <div class="vm-stat"><div class="vm-stat-num">24/7</div><div class="vm-stat-label">Support</div></div>
       </div>
     </div>
-    <div class="vm-card-icon-float">&#127919;</div>
     <div class="vm-card-decorline"></div>
   </div>
 </section>
