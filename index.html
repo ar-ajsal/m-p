@@ -59,7 +59,7 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;padding-t
 .navlinks a::after{content:"";position:absolute;left:0;bottom:0;width:0%;height:1.5px;background:linear-gradient(90deg,var(--copper-lt),var(--gold));transition:width .3s ease}
 .navlinks a:hover{color:var(--navy)}
 .navlinks a:hover::after{width:100%}
-.nav-cta{background:linear-gradient(135deg,var(--copper),var(--copper-lt));color:#fff!important;font-weight:600;padding:.52rem 1.3rem;border-radius:50px;box-shadow:0 4px 16px var(--copper-gw);transition:transform var(--tr),box-shadow var(--tr)!important}
+.nav-cta{display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--copper),var(--copper-lt));color:#fff!important;font-weight:600;padding:.52rem 1.3rem;border-radius:50px;box-shadow:0 4px 16px var(--copper-gw);transition:transform var(--tr),box-shadow var(--tr)!important}
 .nav-cta::after{display:none!important}
 .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px var(--copper-gw)}
 .navmenu-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;z-index:210;padding:8px}
@@ -164,8 +164,8 @@ section.alt{background:var(--bg-alt)}
 .vm-card-full:nth-child(2) .vm-card-content .eyebrow{justify-content:flex-end}
 .vm-card-content .eyebrow{color:var(--copper-lt);margin-bottom:1.2rem}
 .vm-card-content .eyebrow::before{background:linear-gradient(90deg,var(--copper-lt),transparent)}
-.vm-card-content h3{font-size:clamp(2rem,3.5vw,2.8rem);color:#fff;margin-bottom:1.2rem;line-height:1.12}
-.vm-card-content p{color:rgba(255,255,255,.72);font-size:1.06rem;line-height:1.85}
+.vm-card-content h3{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:clamp(2rem,3.5vw,2.8rem);color:#fff;margin-bottom:1.2rem;line-height:1.12}
+.vm-card-content p{font-family:"Work Sans",sans-serif;font-weight:300;color:rgba(255,255,255,.8);font-size:1.1rem;line-height:1.85}
 .vm-card-decorline{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--copper),var(--gold),var(--copper));z-index:3;opacity:.6}
 .vm-card-full:nth-child(2) .vm-card-decorline{top:0;bottom:auto}
 .vm-card-icon-float{position:absolute;z-index:2;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.08);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:2.2rem}
@@ -180,7 +180,7 @@ section.alt{background:var(--bg-alt)}
 /* ======================== VALUES — 4-CARD PREMIUM ======================== */
 .values-section{background:var(--bg);position:relative;overflow:hidden}
 .values-section::before{content:"";position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(181,102,58,.06) 0%,transparent 70%);pointer-events:none}
-.values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.values-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2.5rem}
 .value-card{padding:2.5rem 2rem;background:var(--bg-card);border:1.5px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);position:relative;overflow:hidden;transition:border-color var(--tr),transform var(--tr),box-shadow var(--tr);text-align:center}
 .value-card:hover{border-color:var(--copper-lt);transform:translateY(-8px);box-shadow:var(--shadow-lg)}
 .value-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--copper),var(--gold));transform:scaleX(0);transition:transform .4s ease;transform-origin:left}
@@ -346,9 +346,6 @@ footer{padding:4.5rem 0 3rem;background:var(--navy);border-top:1px solid rgba(25
       <div class="hero-visual">
         <div class="hero-img-frame">
           <img src="images/hero_visual.png" alt="M&amp;P strategic network visualization" loading="eager">
-          <div class="hero-network" aria-hidden="true">
-            <svg viewBox="0 0 500 500"><g class="edges"></g><g class="nodes"></g></svg>
-          </div>
         </div>
       </div>
     </div>
@@ -759,81 +756,6 @@ footer{padding:4.5rem 0 3rem;background:var(--navy);border-top:1px solid rgba(25
       requestAnimationFrame(draw);
     }
     if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches) draw();
-  })();
-
-  // Hero network SVG
-  (function() {
-    const svgNS="http://www.w3.org/2000/svg";
-    const edgesG=document.querySelector('.edges');
-    const nodesG=document.querySelector('.nodes');
-    const center={x:250,y:250};
-    const sectors=[
-      {label:'Advisory',angle:-90},{label:'Logistics',angle:-18},
-      {label:'Trade',angle:54},{label:'Healthcare',angle:126},{label:'Industrial',angle:198}
-    ];
-    const R=160;
-    const points=sectors.map(s => {
-      const rad=s.angle*Math.PI/180;
-      return {x:center.x+R*Math.cos(rad),y:center.y+R*Math.sin(rad),label:s.label};
-    });
-    points.forEach((p,i) => {
-      const line=document.createElementNS(svgNS,'line');
-      line.setAttribute('x1',center.x); line.setAttribute('y1',center.y);
-      line.setAttribute('x2',p.x); line.setAttribute('y2',p.y); line.setAttribute('class','edge');
-      edgesG.appendChild(line);
-      const next=points[(i+1)%points.length];
-      const ring=document.createElementNS(svgNS,'line');
-      ring.setAttribute('x1',p.x); ring.setAttribute('y1',p.y);
-      ring.setAttribute('x2',next.x); ring.setAttribute('y2',next.y);
-      ring.setAttribute('class','edge'); ring.setAttribute('opacity','0.5');
-      edgesG.appendChild(ring);
-    });
-    const cGlow=document.createElementNS(svgNS,'circle');
-    cGlow.setAttribute('cx',center.x); cGlow.setAttribute('cy',center.y);
-    cGlow.setAttribute('r',42); cGlow.setAttribute('fill','rgba(181,102,58,0.1)');
-    nodesG.appendChild(cGlow);
-    const cdot=document.createElementNS(svgNS,'circle');
-    cdot.setAttribute('cx',center.x); cdot.setAttribute('cy',center.y);
-    cdot.setAttribute('r',24); cdot.setAttribute('class','node-dot center');
-    nodesG.appendChild(cdot);
-    const ctext=document.createElementNS(svgNS,'text');
-    ctext.setAttribute('x',center.x); ctext.setAttribute('y',center.y+5);
-    ctext.setAttribute('text-anchor','middle'); ctext.setAttribute('class','node-label center');
-    ctext.textContent='M & P'; nodesG.appendChild(ctext);
-    points.forEach(p => {
-      const glow=document.createElementNS(svgNS,'circle');
-      glow.setAttribute('cx',p.x); glow.setAttribute('cy',p.y);
-      glow.setAttribute('r',18); glow.setAttribute('fill','rgba(181,102,58,0.07)');
-      nodesG.appendChild(glow);
-      const dot=document.createElementNS(svgNS,'circle');
-      dot.setAttribute('cx',p.x); dot.setAttribute('cy',p.y);
-      dot.setAttribute('r',6); dot.setAttribute('class','node-dot');
-      nodesG.appendChild(dot);
-      const lx=center.x+(p.x-center.x)*1.23, ly=center.y+(p.y-center.y)*1.23;
-      const text=document.createElementNS(svgNS,'text');
-      text.setAttribute('x',lx); text.setAttribute('y',ly);
-      text.setAttribute('text-anchor','middle'); text.setAttribute('class','node-label');
-      text.textContent=p.label; nodesG.appendChild(text);
-    });
-    if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
-      points.forEach((p,i) => {
-        const pulse=document.createElementNS(svgNS,'circle');
-        pulse.setAttribute('r',3.5); pulse.setAttribute('class','pulse'); pulse.setAttribute('opacity','0');
-        nodesG.appendChild(pulse);
-        const duration=2800, delay=i*480;
-        function animate(ts) {
-          if(!animate.start) animate.start=ts+delay;
-          const elapsed=ts-animate.start;
-          if(elapsed<0) { requestAnimationFrame(animate); return; }
-          const progress=(elapsed%duration)/duration;
-          pulse.setAttribute('cx',center.x+(p.x-center.x)*progress);
-          pulse.setAttribute('cy',center.y+(p.y-center.y)*progress);
-          pulse.setAttribute('opacity',Math.sin(progress*Math.PI).toFixed(2));
-          requestAnimationFrame(animate);
-        }
-        requestAnimationFrame(animate);
-      });
-    }
   })();
 
   // Parallax on VM section images
