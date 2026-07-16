@@ -162,14 +162,27 @@
     }
 
     header .logo img {
-      height: 120px;
+      height: 70px;
       width: auto;
       object-fit: contain;
       transition: height var(--tr);
     }
 
     header.scrolled .logo img {
-      height: 60px;
+      height: 44px;
+    }
+
+    header .logo-text-block {
+      transition: all var(--tr);
+    }
+
+    header.scrolled .logo-text-block .logo-main-name {
+      font-size: 1rem;
+    }
+
+    header.scrolled .logo-text-block .logo-sub,
+    header.scrolled .logo-text-block .logo-tagline {
+      display: none;
     }
 
     .logo {
@@ -1761,11 +1774,15 @@
       }
 
       header .logo img {
-        height: 80px;
+        height: 52px;
       }
 
       header.scrolled .logo img {
-        height: 50px;
+        height: 36px;
+      }
+
+      header.scrolled .logo-text-block .logo-main-name {
+        font-size: 0.9rem;
       }
 
       .hero-grid,
@@ -1892,16 +1909,16 @@
   <!-- HEADER -->
   <header id="site-header">
     <nav class="wrap">
-      <a href="#top" class="logo" style="padding: 0.2rem 0; flex-direction: column; align-items: center; gap: 0.1rem; text-decoration: none;">
-        <img src="images/logo.png-removebg-preview.png" alt="M&amp;P Logo" style="height: 60px; width: auto; object-fit: contain;">
-        <span style="display: flex; flex-direction: column; align-items: center; line-height: 1.15; text-align: center;">
-          <span style="font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.25rem; color: var(--navy); letter-spacing: 0.04em; white-space: nowrap;">MASTERY &amp; PRECISE</span>
-          <span style="display: flex; align-items: center; gap: 0.4rem; white-space: nowrap;">
-            <span style="height: 1px; width: 22px; background: linear-gradient(90deg, transparent, #c9870a);"></span>
-            <span style="font-family: 'Space Grotesk', sans-serif; font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; color: #c9870a; font-weight: 600;">Business House Private Limited</span>
-            <span style="height: 1px; width: 22px; background: linear-gradient(90deg, #c9870a, transparent);"></span>
+      <a href="#top" class="logo" style="padding: 0.2rem 0; flex-direction: row; align-items: center; gap: 0.7rem; text-decoration: none;">
+        <img src="images/logo.png-removebg-preview.png" alt="M&amp;P Logo">
+        <span class="logo-text-block" style="display: flex; flex-direction: column; align-items: flex-start; line-height: 1.15;">
+          <span class="logo-main-name" style="font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.15rem; color: var(--navy); letter-spacing: 0.04em; white-space: nowrap; transition: font-size var(--tr);">MASTERY &amp; PRECISE</span>
+          <span class="logo-sub" style="display: flex; align-items: center; gap: 0.35rem; white-space: nowrap; transition: opacity var(--tr);">
+            <span style="height: 1px; width: 18px; background: linear-gradient(90deg, transparent, #c9870a);"></span>
+            <span style="font-family: 'Space Grotesk', sans-serif; font-size: 0.48rem; letter-spacing: 0.18em; text-transform: uppercase; color: #c9870a; font-weight: 600;">Business House Private Limited</span>
+            <span style="height: 1px; width: 18px; background: linear-gradient(90deg, #c9870a, transparent);"></span>
           </span>
-          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 0.42rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--navy); opacity: 0.7; white-space: nowrap;">Mastery in Vision. Precise in Action.</span>
+          <span class="logo-tagline" style="font-family: 'Space Grotesk', sans-serif; font-size: 0.4rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--navy); opacity: 0.6; white-space: nowrap; transition: opacity var(--tr);">Mastery in Vision. Precise in Action.</span>
         </span>
       </a>
       <button class="navmenu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
@@ -2054,7 +2071,7 @@
 
       <!-- LEADERSHIP TEAM -->
       <div class="leadership-area">
-        <div class="section-head reveal">
+        <div class="section-head centered reveal">
           <span class="eyebrow">Our People</span>
           <h2>Leadership Team</h2>
           <p>Seasoned professionals driving strategic growth across logistics, supply chain, and business operations.
