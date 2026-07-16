@@ -882,7 +882,7 @@
       left: 0;
       right: 0;
       height: 50%;
-      background: linear-gradient(180deg, transparent, rgba(255,255,255,0.08) 60%, rgba(255,255,255,0.5));
+      background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.08) 60%, rgba(255, 255, 255, 0.5));
       pointer-events: none;
     }
 
@@ -1008,8 +1008,15 @@
     }
 
     @keyframes leaderFadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .leader-prev-companies {
@@ -1869,6 +1876,7 @@
         max-width: 420px;
         margin-inline: auto;
       }
+
       .leadership-area {
         margin-top: 3.5rem;
         padding-top: 3rem;
@@ -1886,6 +1894,7 @@
     <nav class="wrap">
       <a href="#top" class="logo" style="padding: 0.2rem 0;">
         <img src="images/logo.png" alt="M&amp;P Logo">
+        <span style="font-weight: 600; font-size: 1.6rem; margin-left: 0.2rem;">Mastery &amp; Precise</span>
       </a>
       <button class="navmenu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -2040,18 +2049,20 @@
         <div class="section-head reveal">
           <span class="eyebrow">Our People</span>
           <h2>Leadership Team</h2>
-          <p>Seasoned professionals driving strategic growth across logistics, supply chain, and business operations.</p>
+          <p>Seasoned professionals driving strategic growth across logistics, supply chain, and business operations.
+          </p>
         </div>
 
         <div class="leadership-grid">
           <!-- Dr. Afzal Aziz -->
           <div class="leader-card reveal">
             <div class="leader-photo-wrap">
-              <img class="leader-photo" src="images/team_afzal.png" alt="Dr. Afzal Aziz - Global Logistics & Freight Forwarding Executive" loading="lazy">
+              <img class="leader-photo" src="images/team_afzal.png"
+                alt="Dr. Afzal Aziz - Global Logistics & Freight Forwarding Executive" loading="lazy">
             </div>
             <div class="leader-info">
               <h3 class="leader-name">Dr. Afzal Aziz</h3>
-              <div class="leader-meta">Indian, 45</div>
+              <div class="leader-meta">Indian</div>
               <div class="leader-role">Global Logistics &amp; Freight Forwarding Executive</div>
               <div class="leader-highlights">
                 <span class="tag">23+ Yrs Experience</span>
@@ -2059,12 +2070,17 @@
                 <span class="tag">MBA (UK)</span>
               </div>
               <ul class="leader-details">
-                <li><strong>Education &mdash;</strong> Doctorate in Strategic Supply Chain Leadership (Dunster Business School, Switzerland); Integrated Doctorate in Management (UCAM, Spain); MBA (Plymouth University, UK); B.Com (University of Calicut, India)</li>
-                <li><strong>Strengths &mdash;</strong> Strategic leadership, commercial acumen, data-driven decision-making, stakeholder management, high performance team building</li>
+                <li><strong>Education &mdash;</strong> Doctorate in Strategic Supply Chain Leadership (Dunster Business
+                  School, Switzerland); Integrated Doctorate in Management (UCAM, Spain); MBA (Plymouth University, UK);
+                  B.Com (University of Calicut, India)</li>
+                <li><strong>Strengths &mdash;</strong> Strategic leadership, commercial acumen, data-driven
+                  decision-making, stakeholder management, high performance team building</li>
               </ul>
               <div class="leader-expand">
                 <ul class="leader-details">
-                  <li><strong>Skills &mdash;</strong> B2B &amp; B2C business strategy, pricing and P&amp;L ownership, negotiation, project management, operations optimization, KPI design, change management, customer relationship management</li>
+                  <li><strong>Skills &mdash;</strong> B2B &amp; B2C business strategy, pricing and P&amp;L ownership,
+                    negotiation, project management, operations optimization, KPI design, change management, customer
+                    relationship management</li>
                   <li><strong>Languages &mdash;</strong> English, Arabic, Hindi, Malayalam, and Tamil</li>
                 </ul>
                 <div class="leader-prev-companies">
@@ -2082,11 +2098,12 @@
           <!-- Arun Nelli -->
           <div class="leader-card reveal">
             <div class="leader-photo-wrap">
-              <img class="leader-photo" src="images/team_arun.png" alt="Arun Nelli - Supply Chain & Inventory Management Specialist" loading="lazy">
+              <img class="leader-photo" src="images/team_arun.png"
+                alt="Arun Nelli - Supply Chain & Inventory Management Specialist" loading="lazy">
             </div>
             <div class="leader-info">
               <h3 class="leader-name">Arun Nelli</h3>
-              <div class="leader-meta">Indian, 40</div>
+              <div class="leader-meta">Indian</div>
               <div class="leader-role">Supply Chain &amp; Inventory Management Specialist</div>
               <div class="leader-highlights">
                 <span class="tag">15+ Yrs Experience</span>
@@ -2095,11 +2112,15 @@
               </div>
               <ul class="leader-details">
                 <li><strong>Education &mdash;</strong> Bachelors in Commerce, Shobhit University, India</li>
-                <li><strong>Strengths &mdash;</strong> Hands-on operational leadership, process design and optimization, analytical inventory control, adaptability, and people management in warehouse and fleet environments</li>
+                <li><strong>Strengths &mdash;</strong> Hands-on operational leadership, process design and optimization,
+                  analytical inventory control, adaptability, and people management in warehouse and fleet environments
+                </li>
               </ul>
               <div class="leader-expand">
                 <ul class="leader-details">
-                  <li><strong>Skills &mdash;</strong> Inventory management, warehousing, retail logistics, transport and fleet coordination, supply merchandising, reporting and KPI dashboards, problem solving in supply chain, MS Office and related tools</li>
+                  <li><strong>Skills &mdash;</strong> Inventory management, warehousing, retail logistics, transport and
+                    fleet coordination, supply merchandising, reporting and KPI dashboards, problem solving in supply
+                    chain, MS Office and related tools</li>
                   <li><strong>Languages &mdash;</strong> English, Arabic, Hindi, Malayalam, Tamil &amp; Kannada</li>
                 </ul>
                 <div class="leader-prev-companies">
@@ -2117,11 +2138,12 @@
           <!-- Nisar Kondadan -->
           <div class="leader-card reveal">
             <div class="leader-photo-wrap">
-              <img class="leader-photo" src="images/team_nisar.png" alt="Nisar Kondadan - Operations, Sales & Marketing Leader" loading="lazy">
+              <img class="leader-photo" src="images/team_nisar.png"
+                alt="Nisar Kondadan - Operations, Sales & Marketing Leader" loading="lazy">
             </div>
             <div class="leader-info">
               <h3 class="leader-name">Nisar Kondadan</h3>
-              <div class="leader-meta">Indian, 40</div>
+              <div class="leader-meta">Indian</div>
               <div class="leader-role">Operations / Sales &amp; Marketing Leader</div>
               <div class="leader-highlights">
                 <span class="tag">12+ Yrs Experience</span>
@@ -2129,12 +2151,17 @@
                 <span class="tag">M.Ed. &amp; B.Ed.</span>
               </div>
               <ul class="leader-details">
-                <li><strong>Education &mdash;</strong> M.Sc. Psychology (Annamalai University, Chidambaram); M.A. Economics (Annamalai University); M.Ed. &amp; B.Ed. Social Science (MG / Calicut University); B.A. Economics (Calicut University)</li>
-                <li><strong>Strengths &mdash;</strong> End-to-end Marketing Strategy, Operational Efficiency, and Collaborative Partnerships</li>
+                <li><strong>Education &mdash;</strong> M.Sc. Psychology (Annamalai University, Chidambaram); M.A.
+                  Economics (Annamalai University); M.Ed. &amp; B.Ed. Social Science (MG / Calicut University); B.A.
+                  Economics (Calicut University)</li>
+                <li><strong>Strengths &mdash;</strong> End-to-end Marketing Strategy, Operational Efficiency, and
+                  Collaborative Partnerships</li>
               </ul>
               <div class="leader-expand">
                 <ul class="leader-details">
-                  <li><strong>Skills &mdash;</strong> Project sales and marketing, digital campaigns, tender and bid management, client onboarding, logistics coordination, stakeholder communication, team training and mentoring</li>
+                  <li><strong>Skills &mdash;</strong> Project sales and marketing, digital campaigns, tender and bid
+                    management, client onboarding, logistics coordination, stakeholder communication, team training and
+                    mentoring</li>
                   <li><strong>Languages &mdash;</strong> English, Arabic, Hindi and Malayalam</li>
                 </ul>
                 <div class="leader-prev-companies">
@@ -2449,8 +2476,9 @@
       <div class="footer-inner">
         <div class="footer-brand">
           <div class="logo"
-            style="margin-bottom:1rem; background:#fff; padding:0.5rem 0.8rem; border-radius:8px; display:inline-flex;">
+            style="margin-bottom:1rem; background:#fff; padding:0.5rem 1.2rem 0.5rem 0.8rem; border-radius:8px; display:inline-flex; align-items: center; gap: 1rem;">
             <img src="images/logo.png" alt="M&amp;P Logo" style="height: 120px; width: auto; object-fit: contain;">
+            <span style="font-size: 2.2rem; color: var(--navy); font-weight: 600;">Mastery &amp; Precise</span>
           </div>
           <p>A multidisciplinary consulting organization helping businesses achieve sustainable growth through strategic
             advisory, operational excellence, and digital transformation.</p>
